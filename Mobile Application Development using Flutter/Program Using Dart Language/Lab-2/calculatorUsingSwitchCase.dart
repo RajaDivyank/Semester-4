@@ -9,25 +9,25 @@ void main() {
   print("Enter Second number = ");
   double? n2 = double.parse(stdin.readLineSync()!);
   switch (str) {
-    case 'addition':
+    case '+':
       {
         var sum = (n1 + n2);
         print("Addition : $sum");
       }
       break;
-    case 'subtraction':
+    case '-':
       {
         var sub = (n1 - n2);
         print("Subtraction : $sub");
       }
       break;
-    case 'multiplication':
+    case '*':
       {
         var mul = (n1 * n2);
         print("Multiplication : $mul");
       }
       break;
-    case 'division':
+    case '/':
       {
         var div = (n1 / n2);
         print("Division : $div");
