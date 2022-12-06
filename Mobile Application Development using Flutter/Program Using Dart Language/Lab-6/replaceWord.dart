@@ -5,7 +5,7 @@ void main(List<String> args) {
   print("Enter how many worlds you enter = ");
   int? n = int.parse(stdin.readLineSync()!);
   for (int i = 1; i <= n; i++) {
-    print("Enter Number : ");
+    print("Enter World : ");
     String? s = stdin.readLineSync();
     list.add(s);
   }
