@@ -12,7 +12,7 @@ void main(List<String> args) {
   }
   print("Enter Number of Element Second List :");
   int? n2 = int.parse(stdin.readLineSync()!);
-  for (int i = 1; i <= n1; i++) {
+  for (int i = 1; i <= n2; i++) {
     print("Enter Element in Second List : ");
     int? temp = int.parse(stdin.readLineSync()!);
     list2.add(temp);
