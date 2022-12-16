@@ -1,3 +1,4 @@
+//Write a dart code to read 2 lists and return a list that contains only the elements that are common between them.
 import 'dart:io';
 
 void main(List<String> args) {

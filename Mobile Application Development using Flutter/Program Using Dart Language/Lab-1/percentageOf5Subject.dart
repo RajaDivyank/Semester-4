@@ -1,3 +1,4 @@
+//Write a dart code to find the percentage of 5 subjects.
 import 'dart:io';
 
 void main(List<String> args) {
