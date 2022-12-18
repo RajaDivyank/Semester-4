@@ -16,6 +16,7 @@ void main(List<String> args) {
     print("$n is Not Prime");
   }
   checkUsingPositional(5);
+  checkUsingNamed(n: 5);
 }
 
 //Program Using Positional Parameter
