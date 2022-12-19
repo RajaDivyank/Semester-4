@@ -36,9 +36,13 @@ class friendsDetail {
     print("Enter Which Friend's Detail You Search : ");
     String s = stdin.readLineSync()!;
     for (int i = 0; i < list.length; i++) {
-      // if(){
-
-      // }
+      if (list[i]['Name'].toString().toLowerCase() ==
+          s.toString().toLowerCase()) {
+        print("Student ID : ${list[i]['id']}");
+        print("Student Name : ${list[i]['Name']}");
+        print("Student Number : ${list[i]['Number']}");
+        print("Student Age : ${list[i]['Age']}");
+      }
     }
   }
 }
@@ -47,7 +51,7 @@ void main(List<String> args) {
   friendsDetail f = friendsDetail();
   print("Enter How Many Student Detail You Will Enter : ");
   int? n = int.parse(stdin.readLineSync()!);
-  for (int i = 1; i < n; i++) {
+  for (int i = 1; i <= n; i++) {
     print("Enter [" + i.toString() + "] Student Detail : ");
     f.getFriendDetail();
     print("==================================================");
