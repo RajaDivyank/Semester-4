@@ -8,8 +8,11 @@ class candidateDemo {
   double? Candidate_Height;
 
   List<Map<String, dynamic>> list = [];
+  void insertCandidateDetail() {
+    list.add(getCandidateDetails());
+  }
 
-  void GetCandidateDetails({id, Name, Age, Weight, Height}) {
+  Map<String, dynamic> getCandidateDetails() {
     Map<String, dynamic> map = {};
     print("Enter Candidate ID : ");
     map['id'] = stdin.readLineSync();
@@ -21,10 +24,10 @@ class candidateDemo {
     map['Weight'] = stdin.readLineSync();
     print("Enter Candidate Height : ");
     map['Height'] = stdin.readLineSync();
-    list.add(map);
+    return map;
   }
 
-  void DisplayCandidateDetails() {
+  void displayCandidateDetails() {
     for (int i = 0; i < list.length; i++) {
       Map<String, dynamic> map = list[i];
       print("Candidate ID : ${map['id']}");
@@ -35,7 +38,42 @@ class candidateDemo {
     }
   }
 
-  void search() {
-    for (int i = 0; i < list.length; i++) {}
+  void searchCandidateDetail(Candidate_Name, {Function? callback}) {
+    for (int i = 0; i < list.length; i++) {
+      if (list[i]['Candidate_Name'].toString().toLowerCase() ==
+          'Candidate_Name'.toString().toLowerCase()) {
+        print("Candidate ID : ${list[i]['id']}");
+        print("Candidate Name : ${list[i]['Name']}");
+        print("Candidate Age : ${list[i]['Age']}");
+        print("Candidate Weight : ${list[i]['Weight']}");
+        print("Candidate Height : ${list[i]['Height']}");
+        callback!(i);
+      }
+    }
+  }
+
+  void deleteCandidateDetail({Function? callback}) {
+    for (int i = 0; i < list.length; i++) {
+      print("Enter Witch candidate you have to delete : ");
+      String str = stdin.readLineSync()!;
+      if (list[i]['Candidate_Name'].toString().toLowerCase() ==
+          str.toString().toLowerCase()) {
+        list.removeAt(i);
+        callback!(i);
+      }
+    }
+  }
+
+  void editCandidateDetail(map, {Function? callback}) {
+    for (int i = 0; i < list.length; i++) {
+      print("Enter Witch candidate you have to Edit : ");
+      String str = stdin.readLineSync()!;
+      if (list[i]['Candidate_Name'].toString().toLowerCase() ==
+          str.toString().toLowerCase()) {
+        list[i] = map;
+        callback!(i);
+        return;
+      }
+    }
   }
 }
