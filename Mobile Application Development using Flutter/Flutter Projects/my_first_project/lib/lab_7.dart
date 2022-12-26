@@ -9,27 +9,27 @@ class Lab_7 extends StatelessWidget{
           Expanded(
             child: Row(
               children: [
-                Expanded(child: Container(color: Colors.yellow,),),
-                Expanded(child: Container(color: Colors.blue,)),
-                Expanded(child: Container(color: Colors.deepOrange,)),
+                Expanded(child: Container(color: Colors.yellow,margin: EdgeInsets.all(10.0),)),
+                Expanded(child: Container(color: Colors.blue,margin: EdgeInsets.all(10.0))),
+                Expanded(child: Container(color: Colors.deepOrange,margin: EdgeInsets.all(10.0))),
               ],
             ),
           ),
           Expanded(
             child: Row(
               children: [
-                Expanded(child: Container(color: Colors.green,)),
-                Expanded(child: Container(color: Colors.red,)),
-                Expanded(child: Container(color: Colors.black,)),
+                Expanded(child: Container(color: Colors.green,margin: EdgeInsets.all(10.0))),
+                Expanded(child: Container(color: Colors.red,margin: EdgeInsets.all(10.0))),
+                Expanded(child: Container(color: Colors.black,margin: EdgeInsets.all(10.0))),
               ],
             ),
           ),
           Expanded(
             child: Row(
               children: [
-                Expanded(child: Container(color: Colors.lightGreenAccent,)),
-                Expanded(child: Container(color: Colors.brown,)),
-                Expanded(child: Container(color: Colors.cyanAccent,)),
+                Expanded(child: Container(color: Colors.lightGreenAccent,margin: EdgeInsets.all(10.0))),
+                Expanded(child: Container(color: Colors.brown,margin: EdgeInsets.all(10.0))),
+                Expanded(child: Container(color: Colors.cyanAccent,margin: EdgeInsets.all(10.0))),
               ],
             ),
           ),
