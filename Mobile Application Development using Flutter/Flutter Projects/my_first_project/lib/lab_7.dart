@@ -43,7 +43,7 @@ class Lab_7 extends StatelessWidget{
       ),
     );
   }
-  Widget getRow(int part , List<Colors> color){
+  Widget getRow(int part ,{ List<MaterialApp> color}){
     return Row(
     children:
       getExpantion(part,color)
