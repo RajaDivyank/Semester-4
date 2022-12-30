@@ -9,52 +9,25 @@ class Lab_7 extends StatelessWidget{
       ),
       body: Column(
         children: [
-          Expanded(child: getRow(2, [color.green,color.purple])),
+          Expanded(child: getRow(2, [Colors.grey,Colors.green])),
+          Expanded(child: getRow(3, [Colors.purple,Colors.blue,Colors.greenAccent])),
+          Expanded(child: getRow(2, [Colors.red,Colors.green])),
+          Expanded(child: getRow(5,[Colors.greenAccent,Colors.yellow,Colors.white54,Colors.brown,Colors.indigo]))
         ],
-        // children: [
-        //   Expanded(
-        //     child: Row(
-        //       children: [
-        //         Expanded(child: Container(color: Colors.yellow,margin: EdgeInsets.all(10.0),)),
-        //         Expanded(child: Container(color: Colors.blue,margin: EdgeInsets.all(10.0))),
-        //         Expanded(child: Container(color: Colors.deepOrange,margin: EdgeInsets.all(10.0))),
-        //       ],
-        //     ),
-        //   ),
-        //   Expanded(
-        //     child: Row(
-        //       children: [
-        //         Expanded(child: Container(color: Colors.green,margin: EdgeInsets.all(10.0))),
-        //         Expanded(child: Container(color: Colors.red,margin: EdgeInsets.all(10.0))),
-        //         Expanded(child: Container(color: Colors.black,margin: EdgeInsets.all(10.0))),
-        //       ],
-        //     ),
-        //   ),
-        //   Expanded(
-        //     child: Row(
-        //       children: [
-        //         Expanded(child: Container(color: Colors.lightGreenAccent,margin: EdgeInsets.all(10.0))),
-        //         Expanded(child: Container(color: Colors.brown,margin: EdgeInsets.all(10.0))),
-        //         Expanded(child: Container(color: Colors.cyanAccent,margin: EdgeInsets.all(10.0))),
-        //       ],
-        //     ),
-        //   ),
-        // ],
       ),
     );
   }
-  Widget getRow(int part ,{ List<MaterialApp> color}){
+  Widget getRow(int parts ,color){
     return Row(
     children:
-      getExpantion(part,color)
+      getExpantion(parts,color)
     );
   }
   List<Widget> getExpantion(int parts,color){
     List<Widget> widget = [];
     for(int i=0; i<parts;i++){
-      widget.add(Expanded(child: Container(color: (color[i]),)));
+      widget.add(Expanded(child: Container(color: color[i])));
     }
     return widget;
   }
-
 }
