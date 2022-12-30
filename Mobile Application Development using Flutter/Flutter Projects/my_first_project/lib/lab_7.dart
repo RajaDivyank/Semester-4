@@ -9,18 +9,20 @@ class Lab_7 extends StatelessWidget{
       ),
       body: Column(
         children: [
-          Expanded(child: getRow(2, [Colors.grey,Colors.green])),
-          Expanded(child: getRow(3, [Colors.purple,Colors.blue,Colors.greenAccent])),
-          Expanded(child: getRow(2, [Colors.red,Colors.green])),
-          Expanded(child: getRow(5,[Colors.greenAccent,Colors.yellow,Colors.white54,Colors.brown,Colors.indigo]))
+          getRow(2, [Colors.grey,Colors.green]),
+          getRow(3, [Colors.purple,Colors.blue,Colors.greenAccent]),
+          getRow(2, [Colors.red,Colors.green]),
+          getRow(5,[Colors.greenAccent,Colors.yellow,Colors.white54,Colors.brown,Colors.yellow])
         ],
       ),
     );
   }
   Widget getRow(int parts ,color){
-    return Row(
-    children:
-      getExpantion(parts,color)
+    return Expanded(
+      child: Row(
+      children:
+        getExpantion(parts,color)
+      ),
     );
   }
   List<Widget> getExpantion(int parts,color){

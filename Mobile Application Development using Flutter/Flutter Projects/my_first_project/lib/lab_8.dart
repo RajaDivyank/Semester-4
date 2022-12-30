@@ -15,10 +15,6 @@ class Lab_8 extends StatelessWidget {
               Expanded(
                   child: Container(
                 color: Colors.lightGreenAccent,
-                child: Text(
-                  'Light Green',
-                  style: TextStyle(color: Colors.white,fontSize: 30,fontWeight: FontWeight.bold),
-                ),
               )),
               Expanded(
                   child: Container(
