@@ -26,14 +26,15 @@ class _SimpleInterestCalculatorState extends State<SimpleInterestCalculator> {
               'Amount',
               Icons.access_alarm,
               const TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 30,),
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+                fontSize: 30,
+              ),
             ),
             getRow(
               'Rate of Interest',
               'percentage',
-                Icons.access_alarm,
+              Icons.access_alarm,
               const TextStyle(
                   color: Colors.black,
                   fontWeight: FontWeight.bold,
@@ -42,8 +43,20 @@ class _SimpleInterestCalculatorState extends State<SimpleInterestCalculator> {
             getRow(
               'Time Period',
               'Time',
-                Icons.access_alarm,
+              Icons.access_alarm,
               const TextStyle(color: Colors.black, fontSize: 30),
+            ),
+            Container(
+              margin: const EdgeInsets.only(top: 10),
+              child: ElevatedButton(
+                onPressed: () {},
+                child: Text(
+                  'Calculate',
+                ),
+                style: ElevatedButton.styleFrom(
+                  shape: const StadiumBorder(),
+                ),
+              ),
             ),
           ],
         ),
@@ -51,28 +64,31 @@ class _SimpleInterestCalculatorState extends State<SimpleInterestCalculator> {
     );
   }
 
-  Widget getRow(title, hint,suffixicon,suffixstyle) {
-    return Row(
-      children: [
-        Expanded(
-          flex: 1,
-          child: Text(title),
-        ),
-        Expanded(
-          flex: 1,
-          child: TextField(
-            keyboardType: TextInputType.number,
-            decoration: InputDecoration(
-              border: const OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.yellow),
+  Widget getRow(title, hint, suffixicon, suffixstyle) {
+    return Container(
+      margin: const EdgeInsets.only(top: 10),
+      child: Row(
+        children: [
+          Expanded(
+            flex: 1,
+            child: Text(title),
+          ),
+          Expanded(
+            flex: 1,
+            child: TextField(
+              keyboardType: TextInputType.number,
+              decoration: InputDecoration(
+                border: const OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.yellow),
+                ),
+                hintText: hint,
+                suffixIcon: Icon(suffixicon),
+                suffixStyle: suffixstyle,
               ),
-              hintText: hint,
-              suffixIcon: Icon(suffixicon),
-              suffixStyle: suffixstyle,
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
