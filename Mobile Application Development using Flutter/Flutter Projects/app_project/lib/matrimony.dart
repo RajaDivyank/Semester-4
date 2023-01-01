@@ -18,11 +18,15 @@ class Matrimony extends StatelessWidget {
                     fit: BoxFit.cover,
                   ),
                   Container(
-                    margin: EdgeInsets.only(top: 100),
-                    child: Text(
+                    color: Colors.black12.withOpacity(0.3),
+                  ),
+                  Container(
+                    margin: const EdgeInsets.only(top: 100),
+                    child: const Text(
                       'INDIA\'S \n MOST TRUSTED \n MATRIMONY BRAND',
                       textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 28, height: 0.9, fontFamily: 'RalewayBold'),
+                      style: TextStyle(
+                          fontSize: 28, height: 0.9, fontFamily: 'RalewayBold'),
                     ),
                   ),
                 ],
@@ -32,10 +36,10 @@ class Matrimony extends StatelessWidget {
               children: [
                 Expanded(
                   child: Container(
-                    color: Color.fromARGB(255, 139, 195, 75),
+                    color: const Color.fromARGB(255, 139, 195, 75),
                     child: TextButton(
                       onPressed: () {},
-                      child: Text(
+                      child: const Text(
                         'LOGIN',
                         style: TextStyle(color: Colors.white),
                       ),
@@ -44,10 +48,10 @@ class Matrimony extends StatelessWidget {
                 ),
                 Expanded(
                   child: Container(
-                    color: Color.fromARGB(255, 66, 54, 43),
+                    color: const Color.fromARGB(255, 66, 54, 43),
                     child: TextButton(
                       onPressed: () {},
-                      child: Text(
+                      child: const Text(
                         'SIGNUP ->',
                         style: TextStyle(color: Colors.white),
                       ),
