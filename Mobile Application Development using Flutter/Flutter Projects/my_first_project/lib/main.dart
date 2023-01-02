@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_first_project/lab_7.dart';
 import 'package:my_first_project/lab_8.dart';
+import 'package:my_first_project/rowcolumnimage.dart';
 
 void main(){
   runApp(MyApp());
@@ -10,7 +11,7 @@ class MyApp extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
   return MaterialApp(
-    home: Lab_8(),
+    home: RowColumnImage(),
   );
   }
 }
