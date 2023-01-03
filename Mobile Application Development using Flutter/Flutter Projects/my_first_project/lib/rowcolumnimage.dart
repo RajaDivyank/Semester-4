@@ -248,48 +248,57 @@ class RowColumnImage extends StatelessWidget {
                             Expanded(
                               child: Column(
                                 children: [
+                                  // Expanded(
+                                  //   child: Row(
+                                  //     children: [
+                                  //       Expanded(
+                                  //         child: Stack(
+                                  //           fit: StackFit.expand,
+                                  //           children: [
+                                  //             Expanded(
+                                  //               child: Container(
+                                  //                 color: Colors.yellow,
+                                  //                 margin: const EdgeInsets.all(
+                                  //                     10.0),
+                                  //               ),
+                                  //             ),
+                                  //             Expanded(
+                                  //               child: Container(
+                                  //                 padding: EdgeInsets.all(20.0),
+                                  //                 child: Image.asset(
+                                  //                     'assets/images/Kruta3.jpeg',fit: BoxFit.cover,),
+                                  //               ),
+                                  //             ),
+                                  //           ],
+                                  //         ),
+                                  //       ),
+                                  //     ],
+                                  //   ),
+                                  // ),
                                   Expanded(
                                     child: Row(
                                       children: [
                                         Expanded(
                                           child: Stack(
+                                            fit: StackFit.expand,
                                             children: [
                                               Expanded(
                                                 child: Container(
-                                                  color: Colors.yellow,
-                                                  margin: const EdgeInsets.all(
-                                                      10.0),
-                                                ),
+                                                    color: Colors.green,
+                                                    margin:
+                                                        const EdgeInsets.all(
+                                                            10.0)),
                                               ),
-                                              Align(
-                                                alignment: Alignment.center,
-                                                child: Image.asset(
-                                                  'assets/images/Kruta3.jpeg',
-                                                  height: 100,
-                                                ),
-                                              )
-                                            ],
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Expanded(
-                                    child: Row(
-                                      children: [
-                                        Expanded(
-                                          child: Stack(
-                                            children: [
                                               Expanded(
                                                 child: Container(
-                                                  color: Colors.green,
-                                                  margin: const EdgeInsets.all(10.0)
+                                                  padding: const EdgeInsets.all(
+                                                      20.0),
+                                                  child: Image.asset(
+                                                    'assets/images/Kruta3.jpeg',
+                                                    fit: BoxFit.cover,
+                                                  ),
                                                 ),
                                               ),
-                                              Align(
-                                                alignment: Alignment.center,
-                                                child: Image.asset('assets/images/Kruta3.jpeg',height: 100,),
-                                              )
                                             ],
                                           ),
                                         ),
@@ -311,5 +320,12 @@ class RowColumnImage extends StatelessWidget {
         ],
       ),
     );
+  }
+  Widget getImage(colors,margin,){
+    return Expanded(child: Row(
+      children: [
+        Container(color: colors,margin: EdgeInsets.all(margin),)
+      ],
+    ),);
   }
 }

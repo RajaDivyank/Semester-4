@@ -1,5 +1,6 @@
+import 'package:app_project/demo.dart';
 import 'package:app_project/matrimony.dart';
-import 'package:app_project/row_column_image.dart';
+// import 'package:app_project/row_column_image.dart';
 import 'package:app_project/simpleInterestCalculator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -12,8 +13,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: RowColumnImage(),
+    return  MaterialApp(
+      home: Demo(),
     );
   }
 }
