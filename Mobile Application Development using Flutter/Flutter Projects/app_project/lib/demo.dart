@@ -72,6 +72,7 @@ class Demo extends StatelessWidget {
               ],
             ))
           ],
-        ));
+        ),
+    );
   }
 }

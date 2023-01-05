@@ -81,5 +81,8 @@ flutter:
     - family: RalewayBold
       fonts:
         - asset: assets/fonts/Raleway-Bold.ttf
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/Roboto/Roboto-BlackItalic.ttf
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
