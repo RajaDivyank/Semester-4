@@ -5,66 +5,84 @@ class Lab_8 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Lab - 8"),
+        title: const Center(child: Text("Lab - 8")),
       ),
-        body: Column(
-      children: [
-        Expanded(
-          child: Row(
-            children: [
-              Expanded(
+      body: Column(
+        children: [
+          Expanded(
+            child: Row(
+              children: [
+                Expanded(
                   child: Container(
-                color: Colors.lightGreenAccent,
-              )),
-              Expanded(
+                    color: Colors.lightGreenAccent,
+                    child: const Center(child: Text('lightGreenAccent')),
+                  ),
+                ),
+                Expanded(
                   child: Container(
-                color: Colors.cyan,
-                child: Text('cyan'),
-              )),
-              Expanded(
+                    color: Colors.cyan,
+                    child: const Center(child: Text('cyan')),
+                  ),
+                ),
+                Expanded(
                   child: Container(
-                color: Colors.red,
-              )),
-            ],
+                    color: Colors.red,
+                    child: const Center(child: Text('red'),),
+                  ),
+                ),
+              ],
+            ),
           ),
-        ),
-        Expanded(
-          child: Row(
-            children: [
-              Expanded(
+          Expanded(
+            child: Row(
+              children: [
+                Expanded(
                   child: Container(
-                color: Colors.brown,
-              )),
-              Expanded(
+                    color: Colors.brown,
+                    child: const Center(child: Text('Brown'),),
+                  ),
+                ),
+                Expanded(
                   child: Container(
-                color: Colors.yellow,
-              )),
-              Expanded(
+                    color: Colors.yellow,
+                    child: const Center(child: Text('yellow'),),
+                  ),
+                ),
+                Expanded(
                   child: Container(
-                color: Colors.deepPurple,
-              )),
-            ],
+                    color: Colors.deepPurple,
+                    child: const Center(child: Text('deepPurple'),),
+                  ),
+                ),
+              ],
+            ),
           ),
-        ),
-        Expanded(
-          child: Row(
-            children: [
-              Expanded(
+          Expanded(
+            child: Row(
+              children: [
+                Expanded(
                   child: Container(
-                color: Colors.white10,
-              )),
-              Expanded(
+                    color: Colors.orange,
+                    child: const Center(child: Text('orange'),),
+                  ),
+                ),
+                Expanded(
                   child: Container(
-                color: Colors.purple,
-              )),
-              Expanded(
+                    color: Colors.purple,
+                    child: const Center(child: Text('purple'),),
+                  ),
+                ),
+                Expanded(
                   child: Container(
-                color: Colors.greenAccent,
-              )),
-            ],
+                    color: Colors.greenAccent,
+                    child: const Center(child: Text('greenAccent'),),
+                  ),
+                ),
+              ],
+            ),
           ),
-        ),
-      ],
-    ));
+        ],
+      ),
+    );
   }
 }

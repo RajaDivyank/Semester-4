@@ -1,3 +1,4 @@
+import 'package:app_project/matrimony_login_page.dart';
 import 'package:flutter/material.dart';
 
 class Matrimony extends StatelessWidget {
@@ -7,6 +8,11 @@ class Matrimony extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          title: const Center(
+            child: Text('Matrimony Page'),
+          ),
+        ),
         body: Column(
           children: [
             Expanded(
@@ -18,16 +24,42 @@ class Matrimony extends StatelessWidget {
                     fit: BoxFit.cover,
                   ),
                   Container(
-                    color: Colors.black12.withOpacity(0.3),
+                    color: const Color(0x99AAAAAA),
                   ),
-                  Container(
-                    margin: const EdgeInsets.only(top: 100),
-                    child: const Text(
-                      'INDIA\'S \n MOST TRUSTED \n MATRIMONY BRAND',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          fontSize: 28, height: 0.9, fontFamily: 'RalewayBold'),
-                    ),
+                  Column(
+                    children: [
+                      Container(
+                        margin: const EdgeInsets.only(top: 50.0),
+                        child: Image.asset('assets/images/logo.jpg',width: 100,),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.only(top: 10),
+                        child: const Text(
+                          'INDIA\'S \n MOST TRUSTED \n MATRIMONY BRAND',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontSize: 25,
+                              height: 0.9,
+                              fontFamily: 'RalewayBold'),
+                        ),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.only(top: 10),
+                        padding: const EdgeInsets.all(8),
+                        alignment: Alignment.center,
+                        color: Colors.grey,
+                        width: 250,
+                        child: const Text(
+                          "Matrimony",
+                          style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w100,
+                            fontFamily: AutofillHints.birthday,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
@@ -37,13 +69,29 @@ class Matrimony extends StatelessWidget {
                 Expanded(
                   child: Container(
                     color: const Color.fromARGB(255, 139, 195, 75),
-                    child: TextButton(
-                      onPressed: () {},
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: ((context) {
+                              return const MatrimonyLoginPage();
+                            }),
+                          ),
+                        );
+                      },
                       child: const Text(
-                        'LOGIN',
-                        style: TextStyle(color: Colors.white),
+                        "Login",
+                        style: TextStyle(
+                            color: Colors.blue),
                       ),
                     ),
+                    // child: TextButton(
+                    //   onPressed: () {},
+                    //   child: const Text(
+                    //     'LOGIN',
+                    //     style: TextStyle(color: Colors.white),
+                    //   ),
+                    // ),
                   ),
                 ),
                 Expanded(

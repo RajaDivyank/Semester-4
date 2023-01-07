@@ -1,20 +1,17 @@
-import 'package:app_project/demo.dart';
-import 'package:app_project/matrimony.dart';
-// import 'package:app_project/row_column_image.dart';
-import 'package:app_project/simpleInterestCalculator.dart';
+import 'package:app_project/home_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main(){
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
-      home: Demo(),
+    return  const MaterialApp(
+      home: HomePage(),
     );
   }
 }
