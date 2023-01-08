@@ -14,16 +14,7 @@ class MatrimonyLoginPage extends StatelessWidget {
         ),
         body: Column(
           children: [
-            Expanded(
-              child: Stack(
-                fit: StackFit.expand,
-                children: [
-                  Container(
-                    color: Colors.lightBlue[400],
-                  ),
-                ],
-              ),
-            ),
+            Text('Enter User Name'),
           ],
         ),
       ),
