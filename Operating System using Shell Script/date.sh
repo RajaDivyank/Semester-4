@@ -1,0 +1,1 @@
+echo -e " \nToday's Date is $(date +'%Y-%m-%d') "
