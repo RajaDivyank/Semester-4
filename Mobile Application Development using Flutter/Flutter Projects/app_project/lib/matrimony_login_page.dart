@@ -5,9 +5,27 @@ class MatrimonyLoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Center(child: Text('Login Page'),),
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Center(
+            child: Text('Login Page'),
+          ),
+        ),
+        body: Column(
+          children: [
+            Expanded(
+              child: Stack(
+                fit: StackFit.expand,
+                children: [
+                  Container(
+                    color: Colors.lightBlue[400],
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

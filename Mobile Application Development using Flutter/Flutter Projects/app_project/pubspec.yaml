@@ -63,6 +63,7 @@ flutter:
   assets:
     - assets/images/Login_image.jpg
     - assets/images/logo.jpg
+    - assets/images/Inkedlogin_background_image.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

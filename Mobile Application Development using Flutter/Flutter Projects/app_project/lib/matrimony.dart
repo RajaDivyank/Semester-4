@@ -30,7 +30,10 @@ class Matrimony extends StatelessWidget {
                     children: [
                       Container(
                         margin: const EdgeInsets.only(top: 50.0),
-                        child: Image.asset('assets/images/logo.jpg',width: 100,),
+                        child: Image.asset(
+                          'assets/images/logo.jpg',
+                          width: 100,
+                        ),
                       ),
                       Container(
                         margin: const EdgeInsets.only(top: 10),
@@ -69,8 +72,8 @@ class Matrimony extends StatelessWidget {
                 Expanded(
                   child: Container(
                     color: const Color.fromARGB(255, 139, 195, 75),
-                    child: InkWell(
-                      onTap: () {
+                    child: TextButton(
+                      onPressed: () {
                         Navigator.of(context).push(
                           MaterialPageRoute(
                             builder: ((context) {
@@ -80,18 +83,10 @@ class Matrimony extends StatelessWidget {
                         );
                       },
                       child: const Text(
-                        "Login",
-                        style: TextStyle(
-                            color: Colors.blue),
+                        'LOGIN',
+                        style: TextStyle(color: Colors.white),
                       ),
                     ),
-                    // child: TextButton(
-                    //   onPressed: () {},
-                    //   child: const Text(
-                    //     'LOGIN',
-                    //     style: TextStyle(color: Colors.white),
-                    //   ),
-                    // ),
                   ),
                 ),
                 Expanded(
