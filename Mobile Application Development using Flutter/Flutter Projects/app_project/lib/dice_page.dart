@@ -8,52 +8,65 @@ class DicePage extends StatefulWidget {
   @override
   State<DicePage> createState() => _DicePageState();
 }
-int i=1;
-int j=2;
+
+int? i;
+int? j;
+
 class _DicePageState extends State<DicePage> {
   @override
+  void initState() {
+    getRandom();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.red,
-      body: Center(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Expanded(
-              child: InkWell(
-                onTap: () {
-                  getRandom();
-                },
-                child: Container(
-                  margin: const EdgeInsets.all(10.0),
-                  child: Image(
-                    image: AssetImage('assets/images/dice$i.png'),
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Colors.red,
+        appBar: AppBar(
+          title: const Text('Random Number'),
+        ),
+        body: Center(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Expanded(
+                child: InkWell(
+                  onTap: () {
+                    getRandom();
+                  },
+                  child: Container(
+                    margin: const EdgeInsets.all(10.0),
+                    child: Image(
+                      image: AssetImage('assets/images/dice$i.png'),
+                    ),
                   ),
                 ),
               ),
-            ),
-            Expanded(
-              child: InkWell(
-                onTap: () {
-                  getRandom();
-                },
-                child: Container(
-                  margin: const EdgeInsets.all(10.0),
-                  child: Image(
-                    image: AssetImage('assets/images/dice$j.png'),
+              Expanded(
+                child: InkWell(
+                  onTap: () {
+                    getRandom();
+                  },
+                  child: Container(
+                    margin: const EdgeInsets.all(10.0),
+                    child: Image(
+                      image: AssetImage('assets/images/dice$j.png'),
+                    ),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
   }
-  void getRandom(){
+
+  void getRandom() {
     setState(() {
-      i=Random().nextInt(5)+1;
-      j=Random().nextInt(5)+1;
+      i = Random().nextInt(5) + 1;
+      j = Random().nextInt(5) + 1;
     });
   }
 }
