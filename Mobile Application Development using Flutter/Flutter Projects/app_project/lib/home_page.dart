@@ -164,6 +164,7 @@ import 'package:app_project/game_page.dart';
 //   }
 // }
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -177,8 +178,8 @@ class HomePage extends StatelessWidget {
           appBar: AppBar(
             bottom: const TabBar(
               tabs: [
-                Tab(icon: Icon(Icons.calculate),),
-                Tab(icon: Icon(Icons.cake)),
+                Tab(icon: Icon(FontAwesomeIcons.magnifyingGlass,color: Colors.red,),),
+                Tab(icon: FaIcon(FontAwesomeIcons.apple)),
                 Tab(icon: Icon(Icons.image_search_sharp)),
                 Tab(icon: Icon(Icons.album_rounded),),
                 Tab(icon: Icon(Icons.games_outlined),)
