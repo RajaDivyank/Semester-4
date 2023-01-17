@@ -6,9 +6,6 @@ class BirthdatCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Center(child: Text('Birthday Card')),
-      ),
       body: Stack(
         fit: StackFit.expand,
         children: [

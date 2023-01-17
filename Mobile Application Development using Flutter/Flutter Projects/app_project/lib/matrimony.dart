@@ -8,11 +8,6 @@ class Matrimony extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          title: const Center(
-            child: Text('Matrimony Page'),
-          ),
-        ),
         body: Column(
           children: [
             Expanded(
