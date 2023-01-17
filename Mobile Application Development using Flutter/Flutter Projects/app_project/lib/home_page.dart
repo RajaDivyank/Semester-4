@@ -1,3 +1,4 @@
+import 'package:app_project/birthdaycard_page.dart';
 import 'package:app_project/dice_page.dart';
 import 'package:app_project/game_page.dart';
 import 'package:app_project/matrimony.dart';
@@ -122,6 +123,33 @@ class HomePage extends StatelessWidget {
                   },
                   child: const Text(
                     "Game",
+                    style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.blue),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(10),
+            child: Card(
+              elevation: 5,
+              child: Container(
+                padding: const EdgeInsets.all(20),
+                child: InkWell(
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: ((context) {
+                          return const BirthdatCard();
+                        }),
+                      ),
+                    );
+                  },
+                  child: const Text(
+                    "Birthday Card",
                     style: TextStyle(
                         fontSize: 22,
                         fontWeight: FontWeight.w500,
