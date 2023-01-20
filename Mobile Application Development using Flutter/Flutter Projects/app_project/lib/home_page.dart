@@ -178,9 +178,9 @@ class HomePage extends StatelessWidget {
           appBar: AppBar(
             bottom: const TabBar(
               tabs: [
-                Tab(icon: Icon(FontAwesomeIcons.magnifyingGlass,color: Colors.red,),),
-                Tab(icon: FaIcon(FontAwesomeIcons.apple)),
-                Tab(icon: Icon(Icons.image_search_sharp)),
+                Tab(icon: Icon(FontAwesomeIcons.calculator),),
+                Tab(icon: Icon(FontAwesomeIcons.cakeCandles)),
+                Tab(icon: Icon(FontAwesomeIcons.)),
                 Tab(icon: Icon(Icons.album_rounded),),
                 Tab(icon: Icon(Icons.games_outlined),)
               ],
