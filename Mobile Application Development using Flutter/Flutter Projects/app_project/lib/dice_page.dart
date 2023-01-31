@@ -9,8 +9,7 @@ class DicePage extends StatefulWidget {
   State<DicePage> createState() => _DicePageState();
 }
 
-int? i;
-int? j;
+int? i,j;
 
 class _DicePageState extends State<DicePage> {
   @override
@@ -65,8 +64,8 @@ class _DicePageState extends State<DicePage> {
 
   void getRandom() {
     setState(() {
-      i = Random().nextInt(5) + 1;
-      j = Random().nextInt(5) + 1;
+      i = Random().nextInt(6) + 1;
+      j = Random().nextInt(6) + 1;
     });
   }
 }

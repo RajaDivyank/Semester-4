@@ -4,9 +4,6 @@ class Lab_7 extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Dynamic parts"),
-      ),
       body: Column(
         children: [
           getRow(2, [Colors.grey,Colors.green]),

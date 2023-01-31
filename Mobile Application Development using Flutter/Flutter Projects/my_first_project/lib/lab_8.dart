@@ -4,9 +4,6 @@ class Lab_8 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Center(child: Text("Lab - 8")),
-      ),
       body: Column(
         children: [
           Expanded(

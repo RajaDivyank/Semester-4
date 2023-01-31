@@ -26,11 +26,13 @@ class _GamePageState extends State<GamePage> {
                       Expanded(
                         child: InkWell(
                           onTap: () {
-                            getimage();
+                            setState(() {
+                              a = Random().nextInt(8) + 1;
+                            });
                           },
                           child: Container(
                             child: Image.asset(
-                              'assets/images/game$c.jpeg',
+                              'assets/images/game$a.jfif',
                               fit: BoxFit.cover,
                             ),
                           ),
@@ -39,11 +41,13 @@ class _GamePageState extends State<GamePage> {
                       Expanded(
                         child: InkWell(
                           onTap: () {
-                            getimage();
+                            setState(() {
+                              b = Random().nextInt(8) + 1;
+                            });
                           },
                           child: Container(
                             child: Image.asset(
-                              'assets/images/game$a.jpeg',
+                              'assets/images/game$b.jfif',
                               fit: BoxFit.cover,
                             ),
                           ),
@@ -52,56 +56,13 @@ class _GamePageState extends State<GamePage> {
                       Expanded(
                         child: InkWell(
                           onTap: () {
-                            getimage();
+                            setState(() {
+                              c = Random().nextInt(8) + 1;
+                            });
                           },
                           child: Container(
                             child: Image.asset(
-                              'assets/images/game$b.jpeg',
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Expanded(
-                  child: Column(
-                    children: [
-                      Expanded(
-                        child: InkWell(
-                          onTap: () {
-                            getimage();
-                          },
-                          child: Container(
-                            child: Image.asset(
-                              'assets/images/game$e.jpeg',
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        child: InkWell(
-                          onTap: () {
-                            getimage();
-                          },
-                          child: Container(
-                            child: Image.asset(
-                              'assets/images/game$f.jpeg',
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        child: InkWell(
-                          onTap: () {
-                            getimage();
-                          },
-                          child: Container(
-                            child: Image.asset(
-                              'assets/images/game$g.jpeg',
+                              'assets/images/game$c.jfif',
                               fit: BoxFit.cover,
                             ),
                           ),
@@ -116,11 +77,13 @@ class _GamePageState extends State<GamePage> {
                       Expanded(
                         child: InkWell(
                           onTap: () {
-                            getimage();
+                            setState(() {
+                              d = Random().nextInt(8) + 1;
+                            });
                           },
                           child: Container(
                             child: Image.asset(
-                              'assets/images/game$h.jpeg',
+                              'assets/images/game$d.jfif',
                               fit: BoxFit.cover,
                             ),
                           ),
@@ -129,11 +92,13 @@ class _GamePageState extends State<GamePage> {
                       Expanded(
                         child: InkWell(
                           onTap: () {
-                            getimage();
+                            setState(() {
+                              e = Random().nextInt(8) + 1;
+                            });
                           },
                           child: Container(
                             child: Image.asset(
-                              'assets/images/game$i.jpeg',
+                              'assets/images/game$e.jfif',
                               fit: BoxFit.cover,
                             ),
                           ),
@@ -142,11 +107,64 @@ class _GamePageState extends State<GamePage> {
                       Expanded(
                         child: InkWell(
                           onTap: () {
-                            getimage();
+                            setState(() {
+                              f = Random().nextInt(8) + 1;
+                            });
                           },
                           child: Container(
                             child: Image.asset(
-                              'assets/images/game$d.jpeg',
+                              'assets/images/game$f.jfif',
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Expanded(
+                  child: Column(
+                    children: [
+                      Expanded(
+                        child: InkWell(
+                          onTap: () {
+                            setState(() {
+                              g = Random().nextInt(8) + 1;
+                            });
+                          },
+                          child: Container(
+                            child: Image.asset(
+                              'assets/images/game$g.jfif',
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: InkWell(
+                          onTap: () {
+                            setState(() {
+                              h = Random().nextInt(8) + 1;
+                            });
+                          },
+                          child: Container(
+                            child: Image.asset(
+                              'assets/images/game$h.jfif',
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: InkWell(
+                          onTap: () {
+                            setState(() {
+                              i = Random().nextInt(8) + 1;
+                            });
+                          },
+                          child: Container(
+                            child: Image.asset(
+                              'assets/images/game$i.jfif',
                               fit: BoxFit.cover,
                             ),
                           ),
@@ -161,19 +179,5 @@ class _GamePageState extends State<GamePage> {
         ],
       ),
     );
-  }
-
-  void getimage() {
-    setState(() {
-      a = Random().nextInt(8) + 1;
-      b = Random().nextInt(8) + 1;
-      c = Random().nextInt(8) + 1;
-      d = Random().nextInt(8) + 1;
-      e = Random().nextInt(8) + 1;
-      f = Random().nextInt(8) + 1;
-      g = Random().nextInt(8) + 1;
-      h = Random().nextInt(8) + 1;
-      i = Random().nextInt(8) + 1;
-    });
   }
 }

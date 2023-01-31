@@ -16,7 +16,7 @@ class BirthdatCard extends StatelessWidget {
           Container(
             margin: const EdgeInsets.only(bottom: 550, top: 50),
             child: Image.asset(
-              'assets/images/game1.jpeg',
+              'assets/images/game1.jfif',
             ),
           ),
           Container(

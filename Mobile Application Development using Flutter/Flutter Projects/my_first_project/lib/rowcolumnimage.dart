@@ -8,14 +8,6 @@ class RowColumnImage extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.amber,
-        appBar: AppBar(
-          title: const Center(
-            child: Text(
-              'Image Parts',
-              style: TextStyle(color: Colors.black),
-            ),
-          ),
-        ),
         body: Container(
           margin: EdgeInsets.all(10.0),
           child: Row(

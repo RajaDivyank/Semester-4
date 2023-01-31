@@ -180,9 +180,9 @@ class HomePage extends StatelessWidget {
               tabs: [
                 Tab(icon: Icon(FontAwesomeIcons.calculator),),
                 Tab(icon: Icon(FontAwesomeIcons.cakeCandles)),
-                Tab(icon: Icon(FontAwesomeIcons.)),
-                Tab(icon: Icon(Icons.album_rounded),),
-                Tab(icon: Icon(Icons.games_outlined),)
+                Tab(icon: Icon(FontAwesomeIcons.heartCrack)),
+                Tab(icon: Icon(FontAwesomeIcons.dice),),
+                Tab(icon: Icon(FontAwesomeIcons.gamepad),)
               ],
             ),
             title: const Text('All Projects'),
