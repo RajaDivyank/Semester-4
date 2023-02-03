@@ -9,8 +9,7 @@ class MarketPage extends StatefulWidget {
   State<MarketPage> createState() => _MarketPageState();
 }
 
-class _MarketPageState extends State<MarketPage>
-    with TickerProviderStateMixin{
+class _MarketPageState extends State<MarketPage> with TickerProviderStateMixin {
   late AnimationController controller;
 
   @override
@@ -21,9 +20,9 @@ class _MarketPageState extends State<MarketPage>
       vsync: this,
       duration: const Duration(seconds: 10),
     )..addListener(() {
-      setState(() {});
-    });
-    controller.repeat(reverse: false);
+        setState(() {});
+      });
+    controller.repeat(reverse: true);
     super.initState();
   }
 
@@ -32,6 +31,7 @@ class _MarketPageState extends State<MarketPage>
     controller.dispose();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -218,7 +218,7 @@ class _MarketPageState extends State<MarketPage>
                         Expanded(
                           flex: 3,
                           child: Container(
-                            margin: EdgeInsets.only(left: 15.0,top: 5.0),
+                            margin: EdgeInsets.only(left: 15.0, top: 5.0),
                             child: Text(
                               data1,
                               style: TextStyle(color: Colors.grey),
@@ -228,7 +228,8 @@ class _MarketPageState extends State<MarketPage>
                         Expanded(
                           flex: 2,
                           child: Container(
-                            margin: EdgeInsets.only(left: 5.0,right: 5.0,bottom: 5.0,top: 10.0),
+                            margin: EdgeInsets.only(
+                                left: 5.0, right: 5.0, bottom: 5.0, top: 10.0),
                             child: Text(
                               data2,
                               style: TextStyle(color: color2),
@@ -244,18 +245,21 @@ class _MarketPageState extends State<MarketPage>
                         Expanded(
                           flex: 2,
                           child: Container(
-                            margin: EdgeInsets.only(left: 15.0),
-                            child: Text(
-                              data3,
-                              style: TextStyle(color: Colors.white,fontSize: 16),
-                            )
-                          ),
+                              margin: EdgeInsets.only(left: 15.0),
+                              child: Text(
+                                data3,
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 16),
+                              )),
                         ),
                         Expanded(
                           child: Container(
-                            margin: EdgeInsets.only(right: 1,left: 5),
-                            child: Icon(icons,color: iconsColor,size: 15,)
-                          ),
+                              margin: EdgeInsets.only(right: 1, left: 5),
+                              child: Icon(
+                                icons,
+                                color: iconsColor,
+                                size: 15,
+                              )),
                         ),
                       ],
                     ),
@@ -266,8 +270,10 @@ class _MarketPageState extends State<MarketPage>
                         Expanded(
                           child: Center(
                             child: Container(
+                              margin: EdgeInsets.all(10.0),
                               child: Column(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
                                 children: <Widget>[
                                   LinearProgressIndicator(
                                     value: controller.value,
