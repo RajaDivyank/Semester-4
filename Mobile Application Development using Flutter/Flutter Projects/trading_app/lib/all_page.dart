@@ -27,17 +27,12 @@ class _AllPageState extends State<AllPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: const Color.fromARGB(255, 12, 17, 19),
         body: widgetslist[selectedindex],
-        bottomNavigationBar: Theme(
-          data: Theme.of(context).copyWith(
-              // sets the background color of the `BottomNavigationBar`
-              canvasColor: const Color.fromARGB(255, 32, 39, 42),
-              // sets the active color of the `BottomNavigationBar` if `Brightness` is light
-              primaryColor: Colors.white,
-              textTheme: Theme.of(context)
-                  .textTheme
-                  .copyWith(caption: new TextStyle(color: Colors.yellow))),
+        bottomNavigationBar: ClipRRect(
+          borderRadius: BorderRadius.only(topLeft: Radius.circular(20.0),topRight: Radius.circular(20.0),),
           child: BottomNavigationBar(
+            backgroundColor: Color.fromARGB(255, 30, 37, 42),
             items: const <BottomNavigationBarItem>[
               BottomNavigationBarItem(
                 icon: Icon(FontAwesomeIcons.house),
@@ -61,6 +56,7 @@ class _AllPageState extends State<AllPage> {
               ),
             ],
             currentIndex: selectedindex,
+            type: BottomNavigationBarType.fixed,
             onTap: (index) {
               setState(() {
                 selectedindex = index;

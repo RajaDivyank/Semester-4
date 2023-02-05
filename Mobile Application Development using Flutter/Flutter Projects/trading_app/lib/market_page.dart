@@ -10,28 +10,6 @@ class MarketPage extends StatefulWidget {
 }
 
 class _MarketPageState extends State<MarketPage> with TickerProviderStateMixin {
-  late AnimationController controller;
-
-  @override
-  void initState() {
-    controller = AnimationController(
-      /// [AnimationController]s can be created with `vsync: this` because of
-      /// [TickerProviderStateMixin].
-      vsync: this,
-      duration: const Duration(seconds: 10),
-    )..addListener(() {
-        setState(() {});
-      });
-    controller.repeat(reverse: true);
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    controller.dispose();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,167 +17,157 @@ class _MarketPageState extends State<MarketPage> with TickerProviderStateMixin {
       body: Column(
         children: [
           Expanded(
+            child: Row(children: [
+              Expanded(
+                flex: 3,
+                child: Container(
+                  margin: EdgeInsets.only(left: 20.0),
+                  child: Text(
+                    'Historical prices',
+                    style: GoogleFonts.actor(
+                      textStyle: TextStyle(fontSize: 20, color: Colors.white),
+                    ),
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Container(
+                  margin: EdgeInsets.only(left: 30.0),
+                  child: Text(
+                    'Join',
+                    style: GoogleFonts.actor(
+                        textStyle:
+                            TextStyle(fontSize: 15, color: Colors.green)),
+                  ),
+                ),
+              ),
+            ]),
+          ),
+          Expanded(
             flex: 2,
-            child: Row(
-              children: [
-                Column(
-                  children: [
-                    Expanded(
-                      child: Row(
-                        children: [
-                          Container(
-                            child: Text(
-                              'Historical prices',
-                              style: GoogleFonts.actor(
-                                textStyle: TextStyle(
-                                    fontSize: 20, color: Colors.white),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            child: Text(
-                              'Join',
-                              style: GoogleFonts.actor(
-                                  textStyle: TextStyle(
-                                      fontSize: 20, color: Colors.green)),
-                            ),
-                          ),
-                        ],
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      ),
-                    ),
-                    Expanded(
-                      flex: 2,
-                      child: Row(
-                        children: [
-                          Center(
-                            child: Container(
-                              margin: EdgeInsets.only(bottom: 5.0, left: 20.0),
-                              child: Image.asset(
-                                'assets/images/basic-bar-graph.png',
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                )
-              ],
+            child: Center(
+              child: Container(
+                margin: EdgeInsets.only(bottom: 5.0, left: 20.0),
+                child: Image.asset(
+                  'assets/images/basic-bar-graph.png',
+                  fit: BoxFit.cover,
+                ),
+              ),
             ),
           ),
           Expanded(
-            flex: 3,
+            child: Row(children: [
+              Expanded(
+                flex: 3,
+                child: Container(
+                  padding: EdgeInsets.only(top: 40.0),
+                  margin: EdgeInsets.only(left: 20.0),
+                  child: Text(
+                    'Platform data',
+                    style: GoogleFonts.actor(
+                      textStyle: TextStyle(fontSize: 20, color: Colors.white),
+                    ),
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Container(
+                  padding: EdgeInsets.only(top: 40.0),
+                  margin: EdgeInsets.only(left: 30.0),
+                  child: Text(
+                    'More',
+                    style: GoogleFonts.actor(
+                        textStyle:
+                            TextStyle(fontSize: 15, color: Colors.green)),
+                  ),
+                ),
+              ),
+            ]),
+          ),
+          Expanded(
+            flex: 4,
             child: Column(
               children: [
-                Row(
-                  children: [
-                    Container(
-                      margin: const EdgeInsets.only(left: 10, top: 20.0),
-                      child: Text(
-                        'Platform data',
-                        style: GoogleFonts.actor(
-                            textStyle: const TextStyle(
-                                fontSize: 20, color: Colors.white)),
-                      ),
-                    ),
-                  ],
+                Expanded(
+                  child: Row(
+                    children: [
+                      getData('Buy',
+                          percent: '12.6%',
+                          percentcolor: Colors.green,
+                          prices: '9460.378',
+                          updownarrow: FontAwesomeIcons.upLong,
+                          updownarrowcolor: Colors.green,
+                          linecolor: Colors.blue,
+                          linevalue: 0.8),
+                      getData('Sell',
+                          percent: '-6.7%',
+                          percentcolor: Colors.red,
+                          prices: '6399.256',
+                          updownarrow: FontAwesomeIcons.downLong,
+                          updownarrowcolor: Colors.red,
+                          linecolor: Colors.purpleAccent,
+                          linevalue: 0.7),
+                    ],
+                  ),
                 ),
                 Expanded(
-                  child: Column(
+                  child: Row(
                     children: [
-                      Expanded(
-                        child: Row(
-                          children: [
-                            getData(
-                                'Buy',
-                                '12.6%',
-                                Colors.green,
-                                '9460.378',
-                                Colors.pink,
-                                FontAwesomeIcons.upLong,
-                                Colors.green,
-                                'data5',
-                                Colors.pink),
-                            getData(
-                                'Sell',
-                                '-6.7%',
-                                Colors.red,
-                                '6399.256',
-                                Colors.pink,
-                                FontAwesomeIcons.downLong,
-                                Colors.red,
-                                'data5',
-                                Colors.pink),
-                          ],
-                        ),
-                      ),
-                      Expanded(
-                        child: Row(
-                          children: [
-                            getData(
-                                'Algorithm',
-                                '-27.6%',
-                                Colors.red,
-                                '12.68 GH/S',
-                                Colors.pink,
-                                FontAwesomeIcons.downLong,
-                                Colors.red,
-                                'data5',
-                                Colors.pink),
-                            getData(
-                                'Price',
-                                '+18.7%',
-                                Colors.green,
-                                '549.527',
-                                Colors.pink,
-                                FontAwesomeIcons.upLong,
-                                Colors.green,
-                                'data5',
-                                Colors.pink),
-                          ],
-                        ),
-                      ),
-                      Expanded(
-                        child: Row(
-                          children: [
-                            getData(
-                                'Conversion',
-                                '+194.2%',
-                                Colors.green,
-                                '2407.259',
-                                Colors.pink,
-                                FontAwesomeIcons.upLong,
-                                Colors.green,
-                                'data5',
-                                Colors.pink),
-                            getData(
-                                'Super sports',
-                                '0.00%',
-                                Colors.grey,
-                                '2.000.000',
-                                Colors.pink,
-                                FontAwesomeIcons.upLong,
-                                Colors.green,
-                                'data5',
-                                Colors.pink),
-                          ],
-                        ),
-                      ),
+                      getData('Algorithm',
+                          percent: '-27.6%',
+                          percentcolor: Colors.red,
+                          prices: '12.68 GH/S',
+                          updownarrow: FontAwesomeIcons.downLong,
+                          updownarrowcolor: Colors.red,
+                          linecolor: Colors.yellow,
+                          linevalue: 0.6),
+                      getData('Price',
+                          percent: '+18.7%',
+                          percentcolor: Colors.green,
+                          prices: '549.527',
+                          updownarrow: FontAwesomeIcons.upLong,
+                          updownarrowcolor: Colors.green,
+                          linecolor: Colors.redAccent,
+                          linevalue: 0.9),
+                    ],
+                  ),
+                ),
+                Expanded(
+                  child: Row(
+                    children: [
+                      getData('Conversion',
+                          percent: '+194.2%',
+                          percentcolor: Colors.green,
+                          prices: '2407.259',
+                          updownarrow: FontAwesomeIcons.upLong,
+                          updownarrowcolor: Colors.green,
+                          linecolor: Colors.blueGrey,
+                          linevalue: 0.9),
+                      getData('Super sports',
+                          percent: '0.00%',
+                          percentcolor: Colors.grey,
+                          prices: '2.000.000',
+                          linecolor: Colors.greenAccent,
+                          linevalue: 1.0),
                     ],
                   ),
                 ),
               ],
             ),
-          )
+          ),
         ],
       ),
     );
   }
 
-  Widget getData(
-      [data1, data2, color2, data3, color3, icons, iconsColor, data5, color5]) {
+  Widget getData(data1,
+      {percent,
+      percentcolor,
+      prices,
+      updownarrow,
+      updownarrowcolor,
+      linecolor,
+      linevalue}){
     return Expanded(
       child: Row(
         children: [
@@ -231,8 +199,8 @@ class _MarketPageState extends State<MarketPage> with TickerProviderStateMixin {
                             margin: EdgeInsets.only(
                                 left: 5.0, right: 5.0, bottom: 5.0, top: 10.0),
                             child: Text(
-                              data2,
-                              style: TextStyle(color: color2),
+                              percent,
+                              style: TextStyle(color: percentcolor),
                             ),
                           ),
                         ),
@@ -247,19 +215,20 @@ class _MarketPageState extends State<MarketPage> with TickerProviderStateMixin {
                           child: Container(
                               margin: EdgeInsets.only(left: 15.0),
                               child: Text(
-                                data3,
+                                prices,
                                 style: TextStyle(
                                     color: Colors.white, fontSize: 16),
                               )),
                         ),
                         Expanded(
                           child: Container(
-                              margin: EdgeInsets.only(right: 1, left: 5),
-                              child: Icon(
-                                icons,
-                                color: iconsColor,
-                                size: 15,
-                              )),
+                            margin: EdgeInsets.only(right: 1, left: 5),
+                            child: Icon(
+                              updownarrow,
+                              color: updownarrowcolor,
+                              size: 15,
+                            ),
+                          ),
                         ),
                       ],
                     ),
@@ -270,17 +239,14 @@ class _MarketPageState extends State<MarketPage> with TickerProviderStateMixin {
                         Expanded(
                           child: Center(
                             child: Container(
-                              margin: EdgeInsets.all(10.0),
-                              child: Column(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: <Widget>[
-                                  LinearProgressIndicator(
-                                    value: controller.value,
-                                    semanticsLabel: 'Linear progress indicator',
-                                  ),
-                                ],
+                              child: LinearProgressIndicator(
+                                backgroundColor: Colors.grey,
+                                value: linevalue,
+                                color: linecolor,
+                                // value: controller.value,
+                                // valueColor: AlwaysStoppedAnimation(Colors.orange),
                               ),
+                              margin: EdgeInsets.all(12.0),
                             ),
                           ),
                         ),
