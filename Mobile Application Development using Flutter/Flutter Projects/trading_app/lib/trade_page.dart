@@ -2,9 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class TradePage extends StatelessWidget {
+class TradePage extends StatefulWidget {
   const TradePage({Key? key}) : super(key: key);
 
+  @override
+  State<TradePage> createState() => _TradePageState();
+}
+
+class _TradePageState extends State<TradePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,15 +44,10 @@ class TradePage extends StatelessWidget {
             ]),
           ),
           Expanded(
-            child: Column(
-              children: [
-                getTodayData(),
-                getTodayData(),
-                getTodayData(),
-                getTodayData(),
-              ],
-            ),
-          ),
+              flex: 3,
+              child: ListView(
+                children: [],
+              )),
           Expanded(
             child: Row(children: [
               Expanded(
@@ -55,7 +55,7 @@ class TradePage extends StatelessWidget {
                 child: Container(
                   margin: EdgeInsets.only(left: 20.0),
                   child: Text(
-                    'Historical prices',
+                    'Merchants sell',
                     style: GoogleFonts.actor(
                       textStyle: TextStyle(fontSize: 20, color: Colors.white),
                     ),
@@ -66,7 +66,7 @@ class TradePage extends StatelessWidget {
                 child: Container(
                   margin: EdgeInsets.only(left: 30.0),
                   child: Text(
-                    'Join',
+                    'More',
                     style: GoogleFonts.actor(
                         textStyle:
                             TextStyle(fontSize: 15, color: Colors.green)),
@@ -75,57 +75,16 @@ class TradePage extends StatelessWidget {
               ),
             ]),
           ),
-          Container(),
+          Expanded(
+            flex: 3,
+            child: getMerchantSell(),
+          ),
         ],
       ),
     );
   }
 
-  Widget getShareData() {
-    return Expanded(
-      child: Container(
-        child: Expanded(
-          child: Row(
-            children: [
-              Expanded(
-                child: Container(
-                  child: Text(
-                    'data1',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ),
-              ),
-              Expanded(
-                child: Container(
-                  child: Text(
-                    'data1',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ),
-              ),
-              Expanded(
-                child: Container(
-                  child: Text(
-                    'data1',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ),
-              ),
-              Expanded(
-                child: Container(
-                  child: Text(
-                    'data1',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-  Widget getTodayData(){
+  Widget getTodayData() {
     return Expanded(
       child: Container(
         height: 40,
@@ -137,54 +96,53 @@ class TradePage extends StatelessWidget {
         child: Row(
           children: [
             Expanded(
-              child: Container(
-                  child: Icon(FontAwesomeIcons.fontAwesome)),
+                child: ListTile(
+              leading: CircleAvatar(
+                backgroundImage: AssetImage('assets/images/bitcoin.png'),
+              ),
+            ),),
+            Expanded(
+                flex: 2,
+                child: ListTile(
+                  textColor: Colors.white,
+                  title: Text('BTC'),
+                  subtitle:
+                      Text('24475.44', style: TextStyle(color: Colors.grey)),
+                ),),
+            Expanded(
+              flex: 2,
+              child: ListTile(
+                textColor: Colors.white,
+                title: Text('357.34'),
+                subtitle: Text('+0.26%', style: TextStyle(color: Colors.grey)),
+              ),
             ),
             Expanded(
-              child: Container(
-                  child: Column(
-                    children: [
-                      Container(
-                        child: Text('1',style: TextStyle(color: Colors.white),),
-                      ),
-                      Container(
-                        child: Text(
-                          '2',
-                          style: TextStyle(color: Colors.grey),
-                        ),
-                      ),
-                    ],
-                  )),
-            ),
-            Expanded(
-              child: Container(
-                  child: Column(
-                    children: [
-                      Container(
-                        child: Text(
-                          '3',
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      ),
-                      Container(
-                        child: Text(
-                          '4',
-                          style: TextStyle(color: Colors.grey),
-                        ),
-                      ),
-                    ],
-                  )),
-            ),
-            Expanded(
-              child: Container(
-                child: Text(
-                  'data1',
-                  style: TextStyle(color: Colors.white),
+              child: ListTile(
+                trailing: Icon(
+                  FontAwesomeIcons.apple,
+                  color: Colors.white,
                 ),
               ),
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget getMerchantSell() {
+    return Card(
+      color: const Color.fromARGB(255, 32, 39, 42),
+      child: Column(
+        children: [
+          ListTile(
+            title: Text('Muzi',style: TextStyle(color: Colors.grey),),
+            leading: CircleAvatar(
+              backgroundImage: AssetImage('assets/images/bitcoin.png'),
+            ),
+          ),
+        ],
       ),
     );
   }
