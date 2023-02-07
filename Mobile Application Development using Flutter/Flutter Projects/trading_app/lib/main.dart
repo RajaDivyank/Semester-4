@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:trading_app/all_page.dart';
 import 'package:trading_app/balance.dart';
+import 'package:trading_app/demo.dart';
 
 void main() {
   runApp(const MyApp());

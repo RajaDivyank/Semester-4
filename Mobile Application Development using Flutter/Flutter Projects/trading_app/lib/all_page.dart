@@ -14,7 +14,7 @@ class AllPage extends StatefulWidget {
 }
 
 class _AllPageState extends State<AllPage> {
-  int selectedindex = 1;
+  int selectedindex = 0;
   List<Widget> widgetslist = const [
     HomePage(),
     MarketPage(),
@@ -57,6 +57,7 @@ class _AllPageState extends State<AllPage> {
             ],
             currentIndex: selectedindex,
             type: BottomNavigationBarType.fixed,
+            selectedItemColor: Colors.white,
             onTap: (index) {
               setState(() {
                 selectedindex = index;

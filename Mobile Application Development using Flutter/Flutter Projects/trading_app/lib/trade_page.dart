@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+/*import 'package:url_launcher/url_launcher.dart';*/
 
 class TradePage extends StatefulWidget {
   const TradePage({Key? key}) : super(key: key);
@@ -10,6 +12,9 @@ class TradePage extends StatefulWidget {
 }
 
 class _TradePageState extends State<TradePage> {
+  double? _rating;
+  IconData? _selectedIcon;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,10 +49,12 @@ class _TradePageState extends State<TradePage> {
             ]),
           ),
           Expanded(
-              flex: 3,
-              child: ListView(
-                children: [],
-              )),
+            flex: 3,
+            child: ListView(
+              children: <Widget>[
+              ],
+            ),
+          ),
           Expanded(
             child: Row(children: [
               Expanded(
@@ -76,8 +83,15 @@ class _TradePageState extends State<TradePage> {
             ]),
           ),
           Expanded(
-            flex: 3,
-            child: getMerchantSell(),
+              flex: 3,
+              child: ListView(
+                children: <Widget>[
+                  getMerchantSell(),
+                  getMerchantSell(),
+                  getMerchantSell(),
+                  getMerchantSell()
+                ],
+              ),
           ),
         ],
       ),
@@ -96,19 +110,21 @@ class _TradePageState extends State<TradePage> {
         child: Row(
           children: [
             Expanded(
-                child: ListTile(
-              leading: CircleAvatar(
-                backgroundImage: AssetImage('assets/images/bitcoin.png'),
+              child: ListTile(
+                leading: CircleAvatar(
+                  backgroundImage: AssetImage('assets/images/bitcoin.png'),
+                ),
               ),
-            ),),
+            ),
             Expanded(
-                flex: 2,
-                child: ListTile(
-                  textColor: Colors.white,
-                  title: Text('BTC'),
-                  subtitle:
-                      Text('24475.44', style: TextStyle(color: Colors.grey)),
-                ),),
+              flex: 2,
+              child: ListTile(
+                textColor: Colors.white,
+                title: Text('BTC'),
+                subtitle:
+                    Text('24475.44', style: TextStyle(color: Colors.grey)),
+              ),
+            ),
             Expanded(
               flex: 2,
               child: ListTile(
@@ -132,17 +148,96 @@ class _TradePageState extends State<TradePage> {
   }
 
   Widget getMerchantSell() {
-    return Card(
-      color: const Color.fromARGB(255, 32, 39, 42),
-      child: Column(
-        children: [
-          ListTile(
-            title: Text('Muzi',style: TextStyle(color: Colors.grey),),
-            leading: CircleAvatar(
-              backgroundImage: AssetImage('assets/images/bitcoin.png'),
+    return Container(
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(30.0)),
+      margin: EdgeInsets.all(10.0),
+      child: Card(
+        color: const Color.fromARGB(255, 32, 39, 42),
+        child: Column(
+          children: [
+            ListTile(
+              title: Text(
+                'Muzi',
+                style: TextStyle(color: Colors.grey),
+              ),
+              leading: CircleAvatar(
+                backgroundImage: AssetImage('assets/images/bitcoin.png'),
+              ),
+              trailing: Container(
+                child: RatingBar.builder(
+                  initialRating: _rating ?? 0.0,
+                  minRating: 1,
+                  direction: Axis.horizontal,
+                  allowHalfRating: false,
+                  itemCount: 5,
+                  itemSize: 20,
+                  itemPadding: const EdgeInsets.symmetric(horizontal: 2),
+                  itemBuilder: (context, _) => Icon(
+                    _selectedIcon ?? Icons.star,
+                    color: Colors.amber,
+                  ),
+                  onRatingUpdate: (rating) {
+                    _rating = rating;
+                    setState(() {});
+                  },
+                ),
+              ),
             ),
-          ),
-        ],
+            Container(
+              margin: EdgeInsets.only(bottom: 10.0),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Column(
+                      children: [
+                        Text(
+                          'Icon',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        Text(
+                          'BTC',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                    child: Column(
+                      children: [
+                        Text(
+                          'Icon',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        Text(
+                          'BTC',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                    child: TextButton(
+                      child: Container(
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.red),
+                        child: const Padding(
+                          padding: EdgeInsets.only(
+                              left: 30, right: 30, top: 10, bottom: 10),
+                          child: Text(
+                            'BUY',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ),
+                      ),
+                      onPressed: () {},
+                    ),
+                  )
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

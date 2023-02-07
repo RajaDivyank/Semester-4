@@ -1,3 +1,4 @@
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -45,12 +46,55 @@ class _MarketPageState extends State<MarketPage> with TickerProviderStateMixin {
           ),
           Expanded(
             flex: 2,
-            child: Center(
-              child: Container(
-                margin: EdgeInsets.only(bottom: 5.0, left: 20.0),
-                child: Image.asset(
-                  'assets/images/basic-bar-graph.png',
-                  fit: BoxFit.cover,
+            child: SizedBox(
+              width: 400,
+              height: 200,
+              child: LineChart(
+                LineChartData(
+                  borderData: FlBorderData(
+                      show: false
+                  ),
+                  gridData: FlGridData(
+                    show: false,
+                  ),
+                  titlesData: FlTitlesData(
+                    show: false,
+                  ),
+                  maxX: 5,
+                  maxY: 5,
+                  minX: 0,
+                  minY: 0,
+                  lineBarsData: [
+                    LineChartBarData(
+                      spots: [
+                        const FlSpot(0, 0),
+                        const FlSpot(0.6, 0.6),
+                        const FlSpot(1.1, 1.9),
+                        const FlSpot(1.4, 2.20),
+                        const FlSpot(1.6, 2.02),
+                        const FlSpot(1.9, 1.1),
+                        const FlSpot(2.3, 1.8),
+                        const FlSpot(2.6, 2.6),
+                        const FlSpot(3, 2.7),
+                        const FlSpot(3.1, 1.8),
+                        const FlSpot(3.6, 1.9),
+                        const FlSpot(4.5,4.9),
+                        const FlSpot(5, 4),
+                      ],
+                      dotData: FlDotData(
+                        show: false,
+                      ),
+                      isCurved: true,
+                      colors: [const Color(0xffff400b), ],
+                      barWidth: 3,
+                      belowBarData: BarAreaData(
+                        show: true,
+                        colors: [const Color(0xffff600b), const Color(0xff000000),],
+                        gradientFrom: Offset(0, 0.1),
+                        gradientTo: Offset(0, 0.92),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
@@ -167,16 +211,16 @@ class _MarketPageState extends State<MarketPage> with TickerProviderStateMixin {
       updownarrow,
       updownarrowcolor,
       linecolor,
-      linevalue}){
+      linevalue}) {
     return Expanded(
       child: Row(
         children: [
           Expanded(
             child: Container(
-              margin: EdgeInsets.all(10.0),
+              margin: const EdgeInsets.all(10.0),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
-                color: Color.fromARGB(255, 32, 39, 42),
+                color: const Color.fromARGB(255, 32, 39, 42),
               ),
               child: Column(
                 children: [
@@ -213,16 +257,17 @@ class _MarketPageState extends State<MarketPage> with TickerProviderStateMixin {
                         Expanded(
                           flex: 2,
                           child: Container(
-                              margin: EdgeInsets.only(left: 15.0),
-                              child: Text(
-                                prices,
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 16),
-                              )),
+                            margin: EdgeInsets.only(left: 15.0),
+                            child: Text(
+                              prices,
+                              style: const TextStyle(
+                                  color: Colors.white, fontSize: 16),
+                            ),
+                          ),
                         ),
                         Expanded(
                           child: Container(
-                            margin: EdgeInsets.only(right: 1, left: 5),
+                            margin: const EdgeInsets.only(right: 1, left: 5),
                             child: Icon(
                               updownarrow,
                               color: updownarrowcolor,
@@ -246,7 +291,7 @@ class _MarketPageState extends State<MarketPage> with TickerProviderStateMixin {
                                 // value: controller.value,
                                 // valueColor: AlwaysStoppedAnimation(Colors.orange),
                               ),
-                              margin: EdgeInsets.all(12.0),
+                              margin: const EdgeInsets.all(12.0),
                             ),
                           ),
                         ),
