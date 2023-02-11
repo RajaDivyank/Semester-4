@@ -16,7 +16,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    timer = Timer.periodic(Duration(seconds: 1), (Timer t) => getRandom());
+    timer = Timer.periodic(const Duration(seconds: 1), (Timer t) => getRandom());
   }
 
   @override
