@@ -1,3 +1,6 @@
+import 'dart:async';
+import 'dart:math';
+
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -11,6 +14,19 @@ class MarketPage extends StatefulWidget {
 }
 
 class _MarketPageState extends State<MarketPage> with TickerProviderStateMixin {
+  Timer? timer;
+  double? randompercent1,randompercent2,randompercent3,randompercent4,randompercent5,randompercent6;
+  @override
+  void initState() {
+    super.initState();
+    timer = Timer.periodic(Duration(seconds: 1), (Timer t) => getRandom());
+  }
+
+  @override
+  void dispose() {
+    timer?.cancel();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -136,7 +152,7 @@ class _MarketPageState extends State<MarketPage> with TickerProviderStateMixin {
                   child: Row(
                     children: [
                       getData('Buy',
-                          percent: '12.6%',
+                          percent: '+$randompercent1%',
                           percentcolor: Colors.green,
                           prices: '9460.378',
                           updownarrow: FontAwesomeIcons.upLong,
@@ -144,7 +160,7 @@ class _MarketPageState extends State<MarketPage> with TickerProviderStateMixin {
                           linecolor: Colors.blue,
                           linevalue: 0.8),
                       getData('Sell',
-                          percent: '-6.7%',
+                          percent: '-$randompercent2%',
                           percentcolor: Colors.red,
                           prices: '6399.256',
                           updownarrow: FontAwesomeIcons.downLong,
@@ -158,7 +174,7 @@ class _MarketPageState extends State<MarketPage> with TickerProviderStateMixin {
                   child: Row(
                     children: [
                       getData('Algorithm',
-                          percent: '-27.6%',
+                          percent: '-$randompercent3%',
                           percentcolor: Colors.red,
                           prices: '12.68 GH/S',
                           updownarrow: FontAwesomeIcons.downLong,
@@ -166,7 +182,7 @@ class _MarketPageState extends State<MarketPage> with TickerProviderStateMixin {
                           linecolor: Colors.yellow,
                           linevalue: 0.6),
                       getData('Price',
-                          percent: '+18.7%',
+                          percent: '+$randompercent4%',
                           percentcolor: Colors.green,
                           prices: '549.527',
                           updownarrow: FontAwesomeIcons.upLong,
@@ -180,7 +196,7 @@ class _MarketPageState extends State<MarketPage> with TickerProviderStateMixin {
                   child: Row(
                     children: [
                       getData('Conversion',
-                          percent: '+194.2%',
+                          percent: '+$randompercent5%',
                           percentcolor: Colors.green,
                           prices: '2407.259',
                           updownarrow: FontAwesomeIcons.upLong,
@@ -188,7 +204,7 @@ class _MarketPageState extends State<MarketPage> with TickerProviderStateMixin {
                           linecolor: Colors.blueGrey,
                           linevalue: 0.9),
                       getData('Super sports',
-                          percent: '0.00%',
+                          percent: '$randompercent6%',
                           percentcolor: Colors.grey,
                           prices: '2.000.000',
                           linecolor: Colors.greenAccent,
@@ -240,7 +256,7 @@ class _MarketPageState extends State<MarketPage> with TickerProviderStateMixin {
                         Expanded(
                           flex: 2,
                           child: Container(
-                            margin: EdgeInsets.only(
+                            margin: const EdgeInsets.only(
                                 left: 5.0, right: 5.0, bottom: 5.0, top: 10.0),
                             child: Text(
                               percent,
@@ -257,7 +273,7 @@ class _MarketPageState extends State<MarketPage> with TickerProviderStateMixin {
                         Expanded(
                           flex: 2,
                           child: Container(
-                            margin: EdgeInsets.only(left: 15.0),
+                            margin: const EdgeInsets.only(left: 15.0),
                             child: Text(
                               prices,
                               style: const TextStyle(
@@ -305,5 +321,15 @@ class _MarketPageState extends State<MarketPage> with TickerProviderStateMixin {
         ],
       ),
     );
+  }
+  void getRandom(){
+    setState(() {
+      randompercent1 = Random().nextInt(99) + 1;
+      randompercent2 = Random().nextInt(99) + 2;
+      randompercent3 = Random().nextInt(99) + 3;
+      randompercent4 = Random().nextInt(99) + 4;
+      randompercent5 = Random().nextInt(99) + 5;
+      randompercent6 = Random().nextInt(99) + 6;
+    });
   }
 }

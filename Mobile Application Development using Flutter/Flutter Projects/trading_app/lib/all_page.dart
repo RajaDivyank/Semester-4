@@ -30,9 +30,9 @@ class _AllPageState extends State<AllPage> {
         backgroundColor: const Color.fromARGB(255, 12, 17, 19),
         body: widgetslist[selectedindex],
         bottomNavigationBar: ClipRRect(
-          borderRadius: BorderRadius.only(topLeft: Radius.circular(20.0),topRight: Radius.circular(20.0),),
+          borderRadius: const BorderRadius.only(topLeft: Radius.circular(20.0),topRight: Radius.circular(20.0),),
           child: BottomNavigationBar(
-            backgroundColor: Color.fromARGB(255, 30, 37, 42),
+            backgroundColor: const Color.fromARGB(255, 30, 37, 42),
             items: const <BottomNavigationBarItem>[
               BottomNavigationBarItem(
                 icon: Icon(FontAwesomeIcons.house),
