@@ -243,7 +243,7 @@ class _TradePageState extends State<TradePage> {
                   initialRating: _rating ?? 0.0,
                   minRating: 1,
                   direction: Axis.horizontal,
-                  allowHalfRating: false,
+                  allowHalfRating: true,
                   itemCount: 5,
                   itemSize: 20,
                   itemPadding: const EdgeInsets.symmetric(horizontal: 2),
