@@ -52,12 +52,13 @@ class _AllPageState extends State<AllPage> {
               ),
               BottomNavigationBarItem(
                 icon: Icon(FontAwesomeIcons.userGraduate),
-                label: 'Mine',
+                label: '',
               ),
             ],
             currentIndex: selectedindex,
             type: BottomNavigationBarType.fixed,
             selectedItemColor: Colors.white,
+            unselectedItemColor: Colors.grey,
             onTap: (index) {
               setState(() {
                 selectedindex = index;

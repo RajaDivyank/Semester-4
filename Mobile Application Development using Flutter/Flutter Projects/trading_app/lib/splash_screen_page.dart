@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:tbib_splash_screen/splash_screen.dart';
 import 'package:tbib_splash_screen/splash_screen_view.dart';
 import 'package:trading_app/all_page.dart';
+import 'package:trading_app/login_page.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -25,7 +26,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return SplashScreenView(
       navigateWhere: isLoaded,
-      navigateRoute: const AllPage(), backgroundColor: Colors.white,
+      navigateRoute: LoginPage(), backgroundColor: Colors.white,
       linearGradient: const LinearGradient(
           colors: [
             Color(0xFF3366FF),

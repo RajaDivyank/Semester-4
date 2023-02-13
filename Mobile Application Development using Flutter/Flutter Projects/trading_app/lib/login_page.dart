@@ -101,8 +101,6 @@ class _LoginPageState extends State<LoginPage> {
                               return AllPage();
                             },));
                         }
-                        print(userNameController.text);
-                        print(passwordController.text);
                       },
                     ),
                   ),
