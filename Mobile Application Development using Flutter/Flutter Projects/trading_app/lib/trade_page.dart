@@ -15,6 +15,7 @@ class TradePage extends StatefulWidget {
   @override
   State<TradePage> createState() => _TradePageState();
 }
+
 class _SalesData {
   _SalesData(this.year, this.sales);
 
@@ -32,7 +33,8 @@ class _TradePageState extends State<TradePage> {
   @override
   void initState() {
     super.initState();
-    timer = Timer.periodic(const Duration(seconds: 1), (Timer t) => getRandom());
+    timer =
+        Timer.periodic(const Duration(seconds: 1), (Timer t) => getRandom());
   }
 
   @override
@@ -40,6 +42,7 @@ class _TradePageState extends State<TradePage> {
     timer?.cancel();
     super.dispose();
   }
+
   List<_SalesData> data = [
     _SalesData('Jan', 2),
     _SalesData('Feb', 1),
@@ -104,7 +107,12 @@ class _TradePageState extends State<TradePage> {
                   SmoothPageIndicator(
                     controller: controller,
                     count: 3,
-                    effect: const ExpandingDotsEffect(),
+                    effect: const ExpandingDotsEffect(
+                      activeDotColor: Colors.white,
+                      dotHeight: 10,
+                      dotWidth: 13,
+                      radius: 10
+                    ),
                   )
                 ],
               ),
@@ -191,7 +199,8 @@ class _TradePageState extends State<TradePage> {
             percent: '-$randompercent2',
             percentcolor: Colors.red,
             icons: FontAwesomeIcons.downLong,
-            iconscolor: Colors.red,graphcolor: Colors.red),
+            iconscolor: Colors.red,
+            graphcolor: Colors.red),
         getTodayData('assets/images/fan.png',
             name: 'XRH',
             value1: '696.89',
@@ -199,13 +208,21 @@ class _TradePageState extends State<TradePage> {
             percent: '+$randompercent3',
             percentcolor: Colors.green,
             icons: FontAwesomeIcons.upLong,
-            iconscolor: Colors.green,graphcolor: Colors.green),
+            iconscolor: Colors.green,
+            graphcolor: Colors.green),
       ],
     );
   }
 
   Widget getTodayData(images,
-      {name, value1, value2, percent, percentcolor, icons, iconscolor,graphcolor}) {
+      {name,
+      value1,
+      value2,
+      percent,
+      percentcolor,
+      icons,
+      iconscolor,
+      graphcolor}) {
     return Expanded(
       child: Container(
         margin: const EdgeInsets.all(4.0),
@@ -313,7 +330,8 @@ class _TradePageState extends State<TradePage> {
     );
   }
 
-  Widget getMerchantSell(name, {images,name1, name2, name3, name4, ratingvalue}) {
+  Widget getMerchantSell(name,
+      {images, name1, name2, name3, name4, ratingvalue}) {
     return Container(
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(30.0)),
       margin: const EdgeInsets.all(10.0),
@@ -491,3 +509,12 @@ class _TradePageState extends State<TradePage> {
     });
   }
 }
+
+final colors = const [
+  Colors.red,
+  Colors.green,
+  Colors.greenAccent,
+  Colors.amberAccent,
+  Colors.blue,
+  Colors.amber,
+];
