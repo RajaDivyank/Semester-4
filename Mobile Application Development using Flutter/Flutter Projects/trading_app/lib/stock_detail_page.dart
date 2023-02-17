@@ -1,8 +1,39 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
+import 'package:fl_chart/fl_chart.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+import 'dart:async';
+import 'dart:math';
 
-class StockDetailPage extends StatelessWidget {
-  const StockDetailPage({Key? key}) : super(key: key);
+import 'package:trading_app/home_page.dart';
+
+class StockDetailPage extends StatefulWidget {
+  StockDetailPage({Key? key,@required this.map}) : super(key: key);
+  dynamic map;
+  @override
+  State<StockDetailPage> createState() => _StockDetailPageState();
+}
+class _StockDetailPageState extends State<StockDetailPage> {
+  Timer? timer;
+  double? a;
+  @override
+  initState() {
+    timer =
+        Timer.periodic(const Duration(seconds: 1), (Timer t) => getRandom());
+    super.initState();
+  }
+  @override
+  void dispose() {
+    timer?.cancel();
+    super.dispose();
+  }
+  Future<void> deleteById(id) async {
+    final http.Response res = await http.delete(
+      Uri.parse("https://6311884019eb631f9d740d9b.mockapi.io/demoApi/" + id),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -17,34 +48,42 @@ class StockDetailPage extends StatelessWidget {
                 children: [
                   Expanded(
                     child: Container(
-                      child: Icon(
-                        FontAwesomeIcons.apple,
+                      margin: const EdgeInsets.only(left: 25.0,right: 25.0,top: 10.0),
+                      padding: const EdgeInsets.only(top: 5.0,bottom: 5.0),
+                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(10.0),color: const Color.fromARGB(255, 32, 39, 42),),
+                      child: const Icon(
+                        Icons.arrow_back_ios_new_sharp,
                         color: Colors.white,
                       ),
                     ),
                   ),
                   Expanded(
-                      flex: 2,
-                      child: Container(
-                          child: Center(
-                              child: Text(
-                        'Stock Page',
-                        style: TextStyle(color: Colors.white, fontSize: 20),
-                      )))),
+                    flex: 2,
+                    child: Container(
+                      child: const Center(
+                        child: Text(
+                          'Stock Page',
+                          style: TextStyle(color: Colors.white, fontSize: 20),
+                        ),
+                      ),
+                    ),
+                  ),
                   Expanded(
-                      child: Container(
-                          child: Icon(
-                    Icons.save_alt_rounded,
-                    color: Colors.white,
-                  )))
+                    child: Container(
+                      child: const Icon(
+                        Icons.save_alt_rounded,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
             Container(
-              margin: EdgeInsets.all(20.0),
+              margin: const EdgeInsets.all(20.0),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20.0),
-                color: Color.fromARGB(255, 32, 39, 42),
+                color: const Color.fromARGB(255, 32, 39, 42),
               ),
               height: 125,
               child: Column(
@@ -53,17 +92,17 @@ class StockDetailPage extends StatelessWidget {
                     children: [
                       Expanded(
                         child: Container(
-                          padding: EdgeInsets.only(
+                          padding: const EdgeInsets.only(
                               top: 20.0, left: 30.0, bottom: 10.0),
-                          child: const Text(
-                            'Name',
-                            style: TextStyle(color: Colors.white, fontSize: 25),
+                          child: Text(
+                            "${widget.map["Name"]}",
+                            style: TextStyle(color: Colors.white, fontSize: 15),
                           ),
                         ),
                       ),
                       Expanded(
                         child: Container(
-                          padding: EdgeInsets.only(
+                          padding: const EdgeInsets.only(
                               left: 30.0, top: 20.0, bottom: 10.0),
                           child: const Text(
                             'current profit',
@@ -73,35 +112,140 @@ class StockDetailPage extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const ListTile(
-                    leading: Icon(
-                      FontAwesomeIcons.apple,
+                  ListTile(
+                    leading: const Icon(
+                      FontAwesomeIcons.circleArrowUp,
                       color: Colors.white,
                     ),
                     horizontalTitleGap: 1,
                     title: Text(
-                      'value',
-                      style: TextStyle(color: Colors.white, fontSize: 20),
+                      "Rs " + "${widget.map["value"]}",
+                      style: const TextStyle(color: Colors.white, fontSize: 20),
                     ),
                     trailing: Text(
-                      'percent',
-                      style: TextStyle(color: Colors.white),
+                      '+$a%',
+                      style: const TextStyle(color: Colors.green,fontSize: 20),
                     ),
                   )
                 ],
               ),
             ),
             Container(
-              height: 100,
-              color: Colors.red,
+              height: 300,
+              margin: const EdgeInsets.only(top: 20.0),
+              child: SizedBox(
+                width: 400,
+                height: 200,
+                child: LineChart(
+                  LineChartData(
+                    borderData: FlBorderData(show: false),
+                    gridData: FlGridData(
+                      show: false,
+                    ),
+                    titlesData: FlTitlesData(
+                      show: false,
+                    ),
+                    maxX: 5,
+                    maxY: 5,
+                    minX: 0,
+                    minY: 0,
+                    lineBarsData: [
+                      LineChartBarData(
+                        spots: [
+                          const FlSpot(0, 0),
+                          const FlSpot(0.6, 0.6),
+                          const FlSpot(1.1, 1.9),
+                          const FlSpot(1.4, 2.20),
+                          const FlSpot(1.6, 2.02),
+                          const FlSpot(1.9, 1.1),
+                          const FlSpot(2.3, 1.8),
+                          const FlSpot(2.6, 2.6),
+                          const FlSpot(3, 2.7),
+                          const FlSpot(3.1, 1.8),
+                          const FlSpot(3.6, 1.9),
+                          const FlSpot(4.5, 4.9),
+                          const FlSpot(5, 4),
+                        ],
+                        dotData: FlDotData(
+                          show: false,
+                        ),
+                        isCurved: true,
+                        colors: [
+                          const Color(0xffff400b),
+                        ],
+                        barWidth: 3,
+                        belowBarData: BarAreaData(
+                          show: true,
+                          colors: [
+                            const Color(0xffff600b),
+                            const Color(0xff000000),
+                          ],
+                          gradientFrom: Offset(0, 0.1),
+                          gradientTo: Offset(0, 0.92),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             ),
-            // Container(height: 80,color: Colors.orange,),
-            // Container(height: 100,color: Colors.yellow,),
-            // Container(height: 70,color: Colors.pink,),
-            // Container(height: 90,color: Colors.purpleAccent,)
+            Container(
+              margin: const EdgeInsets.only(top: 40.0),
+              child: TextButton(
+                onPressed: () => showDialog(
+                  context: context,
+                  builder: (BuildContext context) => AlertDialog(
+                    title: Column(
+                      children: [
+                        Image.asset(
+                          "assets/images/appLogo.jpg",
+                        ),
+                        const Text("Are you sure you want to delete he user ? ",),
+                      ],
+                    ),
+                    actions: [
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        child: const Text('Cancel'),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          deleteById(widget.map["id"]);
+                          Navigator.of(context)
+                            ..pop()
+                            ..pop()
+                            ..pushReplacement(
+                              MaterialPageRoute<void>(
+                                builder: (BuildContext context) => HomePage(),
+                              ),
+                            );
+                        },
+                        child: const Text('OK'),
+                      ),
+                    ],
+                  ),
+                ),
+                child: Text("Delete",
+                  style: TextStyle(color: Colors.white),
+                ),
+                style: TextButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                      borderRadius:  BorderRadius.circular(30.0)),
+                  backgroundColor: Colors.red,
+                  minimumSize: Size(150, 50),
+                ),
+              ),
+            )
           ],
         ),
       ),
     );
   }
+  void getRandom() {
+      setState(() {
+        a = Random().nextInt(99) + 1;
+      });
+    }
 }

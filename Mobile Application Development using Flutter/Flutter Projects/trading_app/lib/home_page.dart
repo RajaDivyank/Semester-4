@@ -5,6 +5,8 @@ import 'dart:convert';
 import 'dart:async';
 import 'dart:math';
 
+import 'package:trading_app/stock_detail_page.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -14,61 +16,65 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   Future<dynamic> callUserListApi() async {
-    http.Response res = await http
-        .get(Uri.parse('https://6311884019eb631f9d740d9b.mockapi.io/demoApi'));
+    http.Response res = await http.get(
+      Uri.parse("https://6311884019eb631f9d740d9b.mockapi.io/demoApi"),
+    );
     return res.body;
   }
 
-  Timer? timer, timer1;
-  double? a, b, c, d, e, f;
+  Timer? timer1;
   Color _color = Colors.white;
 
   @override
   void initState() {
     super.initState();
-    // timer =
-    //     Timer.periodic(const Duration(seconds: 1), (Timer t) => getRandom());
-    // timer1 = Timer.periodic(
-    //     const Duration(seconds: 3), (Timer t) => getRandomColor());
+    timer1 = Timer.periodic(
+        const Duration(seconds: 3), (Timer t) => getRandomColor());
   }
 
   @override
   void dispose() {
-    timer?.cancel();
     timer1?.cancel();
     super.dispose();
   }
 
-  List<Widget> getUserList(lists, {percent, percentColor}) {
+  List<Widget> getListTiles(lst) {
     List<Widget> list = [];
-    // print(list.toString());
-    // for (int i = 0; i < lists.length; i++) {
-    //   list.add(Container(
-    //     padding: const EdgeInsets.all(10.0),
-    //     child: ListTile(
-    //       tileColor: const Color.fromARGB(255, 32, 39, 42),
-    //       leading: Image.network(
-    //         lists[i]["image"].toString(),
-    //         scale: 13,
-    //       ),
-    //       horizontalTitleGap: 30,
-    //       title: Text(
-    //         lists[i]["Name"].toString(),
-    //         style: const TextStyle(color: Colors.white),
-    //       ),
-    //       subtitle: Text(
-    //         lists[i]["value"].toString(),
-    //         style: const TextStyle(color: Colors.grey),
-    //       ),
-    //       trailing: Container(
-    //         child: Text(
-    //           percent,
-    //           style: TextStyle(color: percentColor),
-    //         ),
-    //       ),
-    //     ),
-    //   ));
-    // }
+    for (int i = 0; i < lst.length; i++) {
+      list.add(
+        Card(
+          elevation: 5,
+          color: const Color.fromARGB(255, 32, 39, 42),
+          margin: const EdgeInsets.all(5),
+          child: InkWell(
+            onTap: () {
+              Map user = lst[i];
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => StockDetailPage(map: user),
+                ),
+              );
+            },
+            child: ListTile(
+              leading: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(100),
+                ),
+                clipBehavior: Clip.antiAlias,
+                child: Image.network(lst[i]["image"].toString()),
+              ),
+              subtitle: Text(lst[i]["value"].toString(),style: const TextStyle(color: Colors.grey),),
+              trailing: const Icon(Icons.arrow_forward_ios,color: Colors.grey,size: 13,),
+              title: Text(
+                lst[i]["Name"].toString(),
+                style: const TextStyle(color: Colors.white,fontSize: 14,fontWeight: FontWeight.bold),
+              ),
+            ),
+          ),
+        ),
+      );
+    }
     return list;
   }
 
@@ -77,155 +83,102 @@ class _HomePageState extends State<HomePage> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: const Color.fromARGB(255, 12, 17, 19),
-        // body: FutureBuilder(
-        //   future: callUserListApi(),
-        //   builder: (context, snapshot) {
-        //     jsonDecode()snapshot.data.toString()
-        //     return Container();
-        //   },
-        // ),
-        // body: ListView(
-        //   children: [
-        //     // Container(
-        //     //   height: 150,
-        //     //   child: Column(
-        //     //     children: [
-        //     //       Expanded(
-        //     //         child: Container(
-        //     //           color: const Color.fromARGB(255, 12, 17, 19),
-        //     //           child: Row(
-        //     //             children: [
-        //     //               Expanded(
-        //     //                 child: Container(
-        //     //                   child: const CircleAvatar(
-        //     //                     backgroundImage:
-        //     //                         AssetImage('assets/images/appLogo.jpg'),
-        //     //                   ),
-        //     //                 ),
-        //     //               ),
-        //     //               Expanded(
-        //     //                 flex: 4,
-        //     //                 child: AnimatedContainer(
-        //     //                   duration: const Duration(seconds: 5),
-        //     //                   child: Center(
-        //     //                     child: Text(
-        //     //                       'Money Market Controller',
-        //     //                       style: TextStyle(
-        //     //                         color: _color,
-        //     //                         fontSize: 20,
-        //     //                       ),
-        //     //                     ),
-        //     //                   ),
-        //     //                 ),
-        //     //               )
-        //     //             ],
-        //     //           ),
-        //     //         ),
-        //     //       ),
-        //     //       Expanded(
-        //     //         child: Container(
-        //     //           color: const Color.fromARGB(255, 12, 17, 19),
-        //     //           margin: const EdgeInsets.all(10.0),
-        //     //           child: const TextField(
-        //     //             decoration: InputDecoration(
-        //     //               filled: true,
-        //     //               fillColor: Colors.grey,
-        //     //               prefixIcon: Icon(Icons.search, color: Colors.white),
-        //     //               border: OutlineInputBorder(
-        //     //                 borderRadius: BorderRadius.all(
-        //     //                   Radius.circular(10),
-        //     //                 ),
-        //     //               ),
-        //     //               hintText: ' Search',
-        //     //             ),
-        //     //           ),
-        //     //         ),
-        //     //       )
-        //     //     ],
-        //     //   ),
-        //     // ),
-        //     FutureBuilder(
-        //       future: callUserListApi(),
-        //       builder: (context, snapshot) {
-        //         if (snapshot.data != null && snapshot.hasData) {
-        //           List<dynamic> lists = jsonDecode(snapshot.data.toString());
-        //           print(lists);
-        //           return ListView(
-        //             // children: getUserList(lists),
-        //           );
-        //         } else {
-        //           return const Center(child: CircularProgressIndicator());
-        //         }
-        //       },
-        //     ),
-        //   ],
-        // ),
-        body: FutureBuilder(
-          future: callUserListApi(),
-          builder: (context, snapshot) {
-            if (snapshot.data != null && snapshot.hasData) {
-              List<dynamic> lists = jsonDecode(snapshot.data.toString());
-              print(lists);
-              return ListView(
-                // children: getUserList(lists),
-              );
-            } else {
-              return const Center(child: CircularProgressIndicator());
-            }
-          },
+        body: ListView(
+          children: [
+            Container(
+              height: 150,
+              child: Column(
+                children: [
+                  Expanded(
+                    child: Container(
+                      color: const Color.fromARGB(255, 12, 17, 19),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Container(
+                              child: const CircleAvatar(
+                                backgroundImage:
+                                    AssetImage('assets/images/appLogo.jpg'),
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            flex: 4,
+                            child: AnimatedContainer(
+                              duration: const Duration(seconds: 5),
+                              child: Center(
+                                child: Text(
+                                  'Money Market Controller',
+                                  style: TextStyle(
+                                    color: _color,
+                                    fontSize: 20,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      color: const Color.fromARGB(255, 12, 17, 19),
+                      margin: const EdgeInsets.all(10.0),
+                      child: TextFormField(
+                        decoration: const InputDecoration(
+                          filled: true,
+                          fillColor: Colors.grey,
+                          prefixIcon: Icon(Icons.search, color: Colors.white),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(10),
+                            ),
+                          ),
+                          hintText: ' Search',
+
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
+            Container(
+              height: 600,
+              child: RefreshIndicator(
+                onRefresh: () async {
+                  setState(() {});
+                },
+                child: FutureBuilder(
+                  future: callUserListApi(),
+                  builder: (context, snapshot) {
+                    if (snapshot.data != null && snapshot.hasData) {
+                      List<dynamic> lst = jsonDecode(snapshot.data.toString());
+                      return ListView(
+                        children: getListTiles(lst),
+                      );
+                    } else {
+                      return const CircularProgressIndicator();
+                    }
+                  },
+                ),
+              ),
+            )
+          ],
         ),
       ),
     );
   }
-
-  Widget getList(percent, {images, percentColor, name, value}) {
-    return Container(
-      padding: const EdgeInsets.all(10.0),
-      child: ListTile(
-        tileColor: const Color.fromARGB(255, 32, 39, 42),
-        leading: Image.asset(
-          images,
-          scale: 13,
-        ),
-        horizontalTitleGap: 30,
-        title: Text(
-          name,
-          style: const TextStyle(color: Colors.white),
-        ),
-        subtitle: Text(
-          value,
-          style: const TextStyle(color: Colors.grey),
-        ),
-        trailing: Container(
-          child: Text(
-            percent,
-            style: TextStyle(color: percentColor),
-          ),
-        ),
-      ),
-    );
+  void getRandomColor() {
+    setState(() {
+      var random = Random();
+      _color = Color.fromRGBO(
+        random.nextInt(256),
+        random.nextInt(256),
+        random.nextInt(256),
+        1,
+      );
+    });
   }
-
-  // void getRandom() {
-  //   setState(() {
-  //     a = Random().nextInt(99) + 1;
-  //     b = Random().nextInt(99) + 2;
-  //     c = Random().nextInt(99) + 3;
-  //     d = Random().nextInt(99) + 4;
-  //     e = Random().nextInt(99) + 5;
-  //     f = Random().nextInt(99) + 6;
-  //   });
-  // }
-
-  // void getRandomColor() {
-  //   setState(() {
-  //     var random = Random();
-  //     _color = Color.fromRGBO(
-  //       random.nextInt(256),
-  //       random.nextInt(256),
-  //       random.nextInt(256),
-  //       1,
-  //     );
-  //   });
-  // }
 }

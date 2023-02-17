@@ -52,7 +52,7 @@ class _AllPageState extends State<AllPage> {
               ),
               BottomNavigationBarItem(
                 icon: Icon(FontAwesomeIcons.userGraduate),
-                label: '',
+                label: 'Mine',
               ),
             ],
             currentIndex: selectedindex,

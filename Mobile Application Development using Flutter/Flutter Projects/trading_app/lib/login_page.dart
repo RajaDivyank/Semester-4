@@ -4,7 +4,7 @@ import 'dart:async';
 import 'dart:math';
 
 class LoginPage extends StatefulWidget {
-  LoginPage({Key? key}) : super(key: key);
+  const LoginPage({Key? key}) : super(key: key);
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -49,13 +49,13 @@ class _LoginPageState extends State<LoginPage> {
                       labelText: 'User Name',
                     ),
                     validator: (value) {
-                      if(value!=null){
-                        if(value.isEmpty){
-                          return 'Enter User Name';
-                        }
-                        if(value.length<5){
-                          return 'Enter Valid User Name';
-                        }
+                      RegExp regex = RegExp("[a-zA-Z]"
+                      );
+                      var passNonNullValue = value ?? "";
+                      if (passNonNullValue.isEmpty) {
+                        return ("Name is required");
+                      } else if (!regex.hasMatch(passNonNullValue)) {
+                        return ("Enter Valid Name");
                       }
                     },
                   ),
@@ -70,14 +70,18 @@ class _LoginPageState extends State<LoginPage> {
                       labelText: 'Password',
                     ),
                     validator: (value) {
-                      if(value!=null){
-                        if(value.isEmpty){
-                          return 'Enter Password';
-                        }
-                        if(value.length<4){
-                          return 'Enter Valid Password';
-                        }
+                      RegExp regex = RegExp(
+                        r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#$&*~]).{8,}$',
+                      );
+                      var passNonNullValue = value ?? "";
+                      if (passNonNullValue.isEmpty) {
+                        return ("Password is required");
+                      } else if (passNonNullValue.length < 6) {
+                        return ("Password Must be more than 5 characters");
+                      } else if (!regex.hasMatch(passNonNullValue)) {
+                        return ("Password should contain upper,lower,digit and Special character ");
                       }
+                      return null;
                     },
                   ),
                 ),
@@ -93,13 +97,14 @@ class _LoginPageState extends State<LoginPage> {
                   child: Container(
                     height: 50,
                     padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-                    child: ElevatedButton(
+                    child: TextButton(
                       child: const Text('Login'),
                       onPressed: () {
                         if(formKey.currentState!.validate()){
-                            Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                              return AllPage();
-                            },));
+                          Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => AllPage()));
+                        } else {
+                          print("Enter the correct values");
                         }
                       },
                     ),

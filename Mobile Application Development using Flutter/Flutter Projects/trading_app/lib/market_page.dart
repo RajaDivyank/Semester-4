@@ -36,13 +36,13 @@ class _MarketPageState extends State<MarketPage> with TickerProviderStateMixin {
   }
   @override
   Widget build(BuildContext context) {
-    List<_SalesData> data = [
-      _SalesData('12.16', 5),
-      _SalesData('12.17', 35),
-      _SalesData('12.18', 20),
-      _SalesData('12.19', 5),
-      _SalesData('12.20', 45)
-    ];
+    // List<_SalesData> data = [
+    //   _SalesData('12.16', 5),
+    //   _SalesData('12.17', 35),
+    //   _SalesData('12.18', 20),
+    //   _SalesData('12.19', 5),
+    //   _SalesData('12.20', 45)
+    // ];
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 12, 17, 19),
       body: ListView(
