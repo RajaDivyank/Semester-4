@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:http/http.dart' as http;
+import 'package:trading_app/all_page.dart';
 import 'dart:convert';
 import 'dart:async';
 import 'dart:math';
@@ -215,10 +216,9 @@ class _StockDetailPageState extends State<StockDetailPage> {
                           deleteById(widget.map["id"]);
                           Navigator.of(context)
                             ..pop()
-                            ..pop()
                             ..pushReplacement(
                               MaterialPageRoute<void>(
-                                builder: (BuildContext context) => HomePage(),
+                                builder: (BuildContext context) => AllPage(),
                               ),
                             );
                         },

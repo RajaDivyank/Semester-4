@@ -8,7 +8,6 @@ import 'package:trading_app/trade_page.dart';
 
 class AllPage extends StatefulWidget {
   const AllPage({Key? key}) : super(key: key);
-
   @override
   State<AllPage> createState() => _AllPageState();
 }

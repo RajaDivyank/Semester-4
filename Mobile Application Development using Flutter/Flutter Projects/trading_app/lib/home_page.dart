@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:http/http.dart' as http;
+import 'package:trading_app/add_stock_page.dart';
 import 'dart:convert';
 import 'dart:async';
 import 'dart:math';
@@ -9,7 +10,7 @@ import 'package:trading_app/stock_detail_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
-
+  // dynamic map;
   @override
   State<HomePage> createState() => _HomePageState();
 }
@@ -28,6 +29,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
+
     timer1 = Timer.periodic(
         const Duration(seconds: 3), (Timer t) => getRandomColor());
   }
@@ -64,11 +66,21 @@ class _HomePageState extends State<HomePage> {
                 clipBehavior: Clip.antiAlias,
                 child: Image.network(lst[i]["image"].toString()),
               ),
-              subtitle: Text(lst[i]["value"].toString(),style: const TextStyle(color: Colors.grey),),
-              trailing: const Icon(Icons.arrow_forward_ios,color: Colors.grey,size: 13,),
+              subtitle: Text(
+                lst[i]["value"].toString(),
+                style: const TextStyle(color: Colors.grey),
+              ),
+              trailing: const Icon(
+                Icons.arrow_forward_ios,
+                color: Colors.grey,
+                size: 13,
+              ),
               title: Text(
                 lst[i]["Name"].toString(),
-                style: const TextStyle(color: Colors.white,fontSize: 14,fontWeight: FontWeight.bold),
+                style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold),
               ),
             ),
           ),
@@ -116,7 +128,24 @@ class _HomePageState extends State<HomePage> {
                                 ),
                               ),
                             ),
-                          )
+                          ),
+                          Expanded(
+                            child: InkWell(
+                              child: const Icon(
+                                FontAwesomeIcons.userPlus,
+                                color: Colors.white,
+                              ),
+                              onTap: () {
+                                Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                                  return AddStockPage(stockModel:null);
+                                },)).then((value) {
+                                  if(value==true){
+                                    setState(() {});
+                                  }
+                                });
+                              },
+                            ),
+                          ),
                         ],
                       ),
                     ),
@@ -136,7 +165,6 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ),
                           hintText: ' Search',
-
                         ),
                       ),
                     ),
@@ -159,7 +187,7 @@ class _HomePageState extends State<HomePage> {
                         children: getListTiles(lst),
                       );
                     } else {
-                      return const CircularProgressIndicator();
+                      return const Center(child: CircularProgressIndicator());
                     }
                   },
                 ),
@@ -170,6 +198,7 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
+
   void getRandomColor() {
     setState(() {
       var random = Random();

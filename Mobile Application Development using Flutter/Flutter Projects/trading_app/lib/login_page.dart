@@ -28,7 +28,8 @@ class _LoginPageState extends State<LoginPage> {
             child: ListView(
               children: <Widget>[
                 Container(
-                  child: Image.asset('assets/images/appLogo-removebg-preview.png'),
+                  child:
+                      Image.asset('assets/images/appLogo-removebg-preview.png'),
                   height: 200,
                 ),
                 Container(
@@ -49,8 +50,7 @@ class _LoginPageState extends State<LoginPage> {
                       labelText: 'User Name',
                     ),
                     validator: (value) {
-                      RegExp regex = RegExp("[a-zA-Z]"
-                      );
+                      RegExp regex = RegExp("[a-zA-Z]");
                       var passNonNullValue = value ?? "";
                       if (passNonNullValue.isEmpty) {
                         return ("Name is required");
@@ -97,12 +97,18 @@ class _LoginPageState extends State<LoginPage> {
                   child: Container(
                     height: 50,
                     padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20.0),
+                        color: Colors.blue),
                     child: TextButton(
-                      child: const Text('Login'),
+                      child: const Text(
+                        'Login',
+                        style: TextStyle(color: Colors.white),
+                      ),
                       onPressed: () {
-                        if(formKey.currentState!.validate()){
+                        if (formKey.currentState!.validate()) {
                           Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => AllPage()));
+                              builder: (context) => AllPage()));
                         } else {
                           print("Enter the correct values");
                         }
@@ -112,14 +118,14 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 Row(
                   children: [
-                    const Text('Does not have account?'),
+                    Text('Does not have account?'),
                     TextButton(
                       child: const Text(
                         'Sign in',
                         style: TextStyle(fontSize: 20),
                       ),
                       onPressed: () {
-                        //signup screen
+
                       },
                     )
                   ],

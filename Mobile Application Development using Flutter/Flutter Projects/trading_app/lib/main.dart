@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trading_app/add_stock_page.dart';
 import 'package:trading_app/all_page.dart';
 import 'package:trading_app/balance.dart';
 import 'package:trading_app/demo.dart';
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
+      home: HomePage(),
     );
   }
 }
