@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:trading_app/home_page.dart';
-import 'package:trading_app/issue_page.dart';
-import 'package:trading_app/market_page.dart';
-import 'package:trading_app/mine_page.dart';
-import 'package:trading_app/trade_page.dart';
+import 'package:trading_app/Pages/home_page.dart';
+import 'package:trading_app/Pages/issue_page.dart';
+import 'package:trading_app/Pages/market_page.dart';
+import 'package:trading_app/Pages/mine_page.dart';
+import 'package:trading_app/Pages/trade_page.dart';
 
 class AllPage extends StatefulWidget {
   const AllPage({Key? key}) : super(key: key);

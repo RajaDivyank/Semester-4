@@ -1,10 +1,7 @@
-import 'dart:async';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:tbib_splash_screen/splash_screen.dart';
 import 'package:tbib_splash_screen/splash_screen_view.dart';
-import 'package:trading_app/all_page.dart';
-import 'package:trading_app/login_page.dart';
+import 'package:trading_app/Pages/login_page.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);

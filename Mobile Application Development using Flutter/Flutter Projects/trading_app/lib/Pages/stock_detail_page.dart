@@ -1,35 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:http/http.dart' as http;
-import 'package:trading_app/all_page.dart';
-import 'dart:convert';
+import 'package:trading_app/Pages/add_stock_page.dart';
+import 'package:trading_app/Pages/all_page.dart';
 import 'dart:async';
 import 'dart:math';
 
-import 'package:trading_app/home_page.dart';
-
 class StockDetailPage extends StatefulWidget {
-  StockDetailPage({Key? key,@required this.map}) : super(key: key);
+  StockDetailPage({Key? key, @required this.map}) : super(key: key);
   dynamic map;
+
   @override
   State<StockDetailPage> createState() => _StockDetailPageState();
 }
+
 class _StockDetailPageState extends State<StockDetailPage> {
   Timer? timer;
   double? a;
+
   @override
   initState() {
     timer =
         Timer.periodic(const Duration(seconds: 1), (Timer t) => getRandom());
     super.initState();
   }
+
   @override
   void dispose() {
     timer?.cancel();
     super.dispose();
   }
+
   Future<void> deleteById(id) async {
     final http.Response res = await http.delete(
       Uri.parse("https://6311884019eb631f9d740d9b.mockapi.io/demoApi/" + id),
@@ -48,14 +50,23 @@ class _StockDetailPageState extends State<StockDetailPage> {
               child: Row(
                 children: [
                   Expanded(
-                    child: Container(
-                      margin: const EdgeInsets.only(left: 25.0,right: 25.0,top: 10.0),
-                      padding: const EdgeInsets.only(top: 5.0,bottom: 5.0),
-                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(10.0),color: const Color.fromARGB(255, 32, 39, 42),),
-                      child: const Icon(
-                        Icons.arrow_back_ios_new_sharp,
-                        color: Colors.white,
+                    child: InkWell(
+                      child: Container(
+                        margin: const EdgeInsets.only(
+                            left: 30.0, right: 30.0, top: 10.0),
+                        padding: const EdgeInsets.only(top: 5.0, bottom: 5.0),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10.0),
+                          color: const Color.fromARGB(255, 32, 39, 42),
+                        ),
+                        child: const Icon(
+                          Icons.arrow_back_ios_new_sharp,
+                          color: Colors.white,
+                        ),
                       ),
+                      onTap: () {
+                        Navigator.of(context).pop(true);
+                      },
                     ),
                   ),
                   Expanded(
@@ -71,10 +82,9 @@ class _StockDetailPageState extends State<StockDetailPage> {
                   ),
                   Expanded(
                     child: Container(
-                      child: const Icon(
-                        Icons.save_alt_rounded,
-                        color: Colors.white,
-                      ),
+                      padding: EdgeInsets.all(2.0),
+                      margin: EdgeInsets.only(top: 10.0),
+                      child: Image.network(widget.map['image']),
                     ),
                   ),
                 ],
@@ -97,7 +107,7 @@ class _StockDetailPageState extends State<StockDetailPage> {
                               top: 20.0, left: 30.0, bottom: 10.0),
                           child: Text(
                             "${widget.map["Name"]}",
-                            style: TextStyle(color: Colors.white, fontSize: 15),
+                            style: const TextStyle(color: Colors.white, fontSize: 17,fontWeight: FontWeight.bold),
                           ),
                         ),
                       ),
@@ -125,7 +135,7 @@ class _StockDetailPageState extends State<StockDetailPage> {
                     ),
                     trailing: Text(
                       '+$a%',
-                      style: const TextStyle(color: Colors.green,fontSize: 20),
+                      style: const TextStyle(color: Colors.green, fontSize: 20),
                     ),
                   )
                 ],
@@ -192,50 +202,77 @@ class _StockDetailPageState extends State<StockDetailPage> {
             ),
             Container(
               margin: const EdgeInsets.only(top: 40.0),
-              child: TextButton(
-                onPressed: () => showDialog(
-                  context: context,
-                  builder: (BuildContext context) => AlertDialog(
-                    title: Column(
-                      children: [
-                        Image.asset(
-                          "assets/images/appLogo.jpg",
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  TextButton(
+                    onPressed: () => showDialog(
+                      context: context,
+                      builder: (BuildContext context) => AlertDialog(
+                        title: Column(
+                          children: [
+                            Image.asset(
+                              "assets/images/appLogo.jpg",
+                            ),
+                            const Text(
+                              "Are you sure you want to delete he user ? ",
+                            ),
+                          ],
                         ),
-                        const Text("Are you sure you want to delete he user ? ",),
-                      ],
+                        actions: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: const Text('Cancel'),
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              deleteById(widget.map["id"]);
+                              Navigator.of(context)
+                                ..pop()
+                                ..pushReplacement(
+                                  MaterialPageRoute<void>(
+                                    builder: (BuildContext context) =>
+                                        AllPage(),
+                                  ),
+                                );
+                            },
+                            child: const Text('OK'),
+                          ),
+                        ],
+                      ),
                     ),
-                    actions: [
-                      TextButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        child: const Text('Cancel'),
-                      ),
-                      TextButton(
-                        onPressed: () {
-                          deleteById(widget.map["id"]);
-                          Navigator.of(context)
-                            ..pop()
-                            ..pushReplacement(
-                              MaterialPageRoute<void>(
-                                builder: (BuildContext context) => AllPage(),
-                              ),
-                            );
-                        },
-                        child: const Text('OK'),
-                      ),
-                    ],
+                    child: Text(
+                      "Delete",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    style: TextButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30.0)),
+                      backgroundColor: Colors.red,
+                      minimumSize: Size(150, 50),
+                    ),
                   ),
-                ),
-                child: Text("Delete",
-                  style: TextStyle(color: Colors.white),
-                ),
-                style: TextButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                      borderRadius:  BorderRadius.circular(30.0)),
-                  backgroundColor: Colors.red,
-                  minimumSize: Size(150, 50),
-                ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) =>
+                            AddStockPage(stockModel : widget.map),
+                      ));
+                    },
+                    child: Text(
+                      "Edit",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    style: TextButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30.0)),
+                      backgroundColor: Colors.green,
+                      minimumSize: const Size(150, 50),
+                    ),
+                  )
+                ],
               ),
             )
           ],
@@ -243,9 +280,10 @@ class _StockDetailPageState extends State<StockDetailPage> {
       ),
     );
   }
+
   void getRandom() {
-      setState(() {
-        a = Random().nextInt(99) + 1;
-      });
-    }
+    setState(() {
+      a = Random().nextInt(99) + 1;
+    });
+  }
 }
