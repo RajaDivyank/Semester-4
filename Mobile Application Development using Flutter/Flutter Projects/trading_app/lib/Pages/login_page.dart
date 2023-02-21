@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:trading_app/Pages/all_page.dart';
-import 'dart:async';
-import 'dart:math';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
