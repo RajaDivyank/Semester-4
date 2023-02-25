@@ -1,11 +1,12 @@
 //region Imports Statements
 import 'package:flutter/material.dart';
 import 'package:matrimony_app/Model/user_model.dart';
+import 'package:matrimony_app/new_user_page.dart';
 //endregion
 
 class UserDetailsPage extends StatefulWidget{
   UserDetailsPage({super.key, required this.detailsMap,});
-  UserModel detailsMap;
+  NewUserModel detailsMap;
   @override
   State<UserDetailsPage> createState() => _UserDetailsPageState();
 }
@@ -27,12 +28,11 @@ class _UserDetailsPageState extends State<UserDetailsPage> {
                 Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (context) {
-                      return Container();
-                      // return NewUser(model: widget.detailsMap);
+                      return NewUser(model: widget.detailsMap);
                     },
                   ),
                 ).then((value) {
-                  print( (value as UserModel).Age);
+                  print( (value as NewUserModel).Age);
                   setState(() {
                     widget.detailsMap = value;
                   });

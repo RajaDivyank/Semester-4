@@ -28,19 +28,19 @@ class MatrimonyDatabase {
       await rootBundle.load(join('assets/database', 'matrimony.db'));
       List<int> bytes =
       data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
-      await File(path).writeAsBytes(bytes);
+      await new File(path).writeAsBytes(bytes);
     }
   }
   //endregion
 
   //region Get Data From User Table
-  Future<List<UserModel>> getDataFromUserTable() async {
-    List<UserModel> userModelList = [];
+  Future<List<NewUserModel>> getDataFromUserTable() async {
+    List<NewUserModel> userModelList = [];
     Database db = await initDatabase();
     List<Map<String, Object?>> data =
     await db.rawQuery("SELECT * FROM UsersList");
     for (int i = 0; i < data.length; i++) {
-      UserModel model = UserModel();
+      NewUserModel model = NewUserModel();
       model.UserID = data[i]['UserID'] as int;
       model.Username = data[i]['Username'].toString();
       model.Age = data[i]['Age'] as int;
@@ -49,6 +49,7 @@ class MatrimonyDatabase {
       userModelList.add(model);
     }
     return userModelList;
+    // print("LENGTH ::: ${data.length}");
   }
   //endregion
 

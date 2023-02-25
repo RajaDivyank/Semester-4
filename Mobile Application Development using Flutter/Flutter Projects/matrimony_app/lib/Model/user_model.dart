@@ -1,8 +1,10 @@
-class UserModel{
+class NewUserModel {
+  //region Column Declration
   late int _UserID;
   late String _Username;
   late int _Age;
   late String _City;
+  //endregion
 
   //region GET & SET DATA
   int get UserID => _UserID;
@@ -24,4 +26,5 @@ class UserModel{
   set City(String City) {
     _City = City;
   }
+//endregion
 }
