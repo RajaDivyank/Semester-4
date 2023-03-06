@@ -14,7 +14,6 @@ class UsersListPage extends StatefulWidget {
 }
 
 class _UsersListPageState extends State<UsersListPage> {
-
   //region Variable Declaration
   MatrimonyDatabase db = MatrimonyDatabase();
   List<NewUserModel> localList = [];

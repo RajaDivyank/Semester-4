@@ -113,66 +113,6 @@ class _AddStockPageState extends State<AddStockPage> {
                     },
                   ),
                 ),
-                // Container(
-                //   child: TextButton(
-                //     onPressed: () => showDialog(
-                //       context: context,
-                //       builder: (BuildContext context) => AlertDialog(
-                //         content: const Text('AlertDialog description'),
-                //         title: Column(
-                //           children: [
-                //             Text(
-                //               "Are you sure you want to sign up",
-                //             ),
-                //           ],
-                //         ),
-                //         actions: [
-                //           TextButton(
-                //             onPressed: () {
-                //               Navigator.pop(context);
-                //             },
-                //             child: const Text('Cancel'),
-                //           ),
-                //           TextButton(
-                //             onPressed: () {
-                //               if (formKey.currentState!.validate()) {
-                //                 map['Name'] = stockNameController.text.toString();
-                //                 map['value'] = valuesController.text.toString();
-                //                 if (widget.stockModel == null) {
-                //                   insertStock(map);
-                //                 } else {
-                //                   print(id);
-                //                   updateInApi(
-                //                     map,
-                //                     id: id.toString(),
-                //                   );
-                //                 }
-                //                 // print(map);
-                //                 Navigator.of(context)
-                //                   ..pop()
-                //                   ..pushReplacement(
-                //                     MaterialPageRoute<void>(
-                //                       builder: (BuildContext context) =>
-                //                           HomePage(),
-                //                     ),
-                //                   );
-                //               }
-                //             },
-                //             child: const Text('OK'),
-                //           ),
-                //         ],
-                //       ),
-                //     ),
-                //     child: Text('Submit',style: TextStyle(color: Colors.white),),
-                //     style: TextButton.styleFrom(
-                //       shape:  RoundedRectangleBorder(
-                //         borderRadius: BorderRadius.circular(30.0),
-                //       ),
-                //       backgroundColor: Colors.green,
-                //       minimumSize: const Size(150, 50),
-                //     ),
-                //   ),
-                // ),
                 Container(
                   height: 50,
                   margin: const EdgeInsets.all(50.0),
