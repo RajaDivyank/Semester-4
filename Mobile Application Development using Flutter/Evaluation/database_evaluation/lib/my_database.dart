@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:database_evaluation/city_model.dart';
 import 'package:path/path.dart';
 import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
@@ -32,7 +33,7 @@ class MyDatabase{
   }
   Future<dynamic> getData() async {
     Database db = await initDatabase();
-    dynamic list = await db.rawQuery("select * from employeelist");
+    dynamic list = await db.rawQuery("Select * from Employeelist inner join Citylist on Employeelist.CityId = Citylist.CityID");
     getUser();
     return list;
   }
@@ -43,5 +44,18 @@ class MyDatabase{
   Future<void> deleteById(int id) async {
     Database db = await initDatabase();
     db.rawQuery("Delete from employeelist where EmployeeID = ${id}");
+  }
+  Future<List<CityModel>> getCityList() async {
+    Database db = await initDatabase();
+    List<Map<String, Object?>> res = await db.rawQuery("Select * from Citylist");
+    List<CityModel> resList = [];
+    for (int i = 0; i < res.length; i++) {
+      CityModel model = CityModel();
+      model.cityId = int.parse(res[i]["CityID"].toString());
+      model.cityName = res[i]["CityName"].toString();
+      resList.add(model);
+    }
+    print(resList.toString());
+    return resList;
   }
 }
