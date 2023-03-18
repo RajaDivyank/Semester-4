@@ -30,9 +30,11 @@ class _EmployeePageState extends State<EmployeePage> {
             InkWell(
               child: const Icon(Icons.add),
               onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return AddEditPage(data: null);
-                },));
+                Navigator.push(context, MaterialPageRoute(
+                  builder: (context) {
+                    return AddEditPage(data: null);
+                  },
+                ));
               },
             )
           ],
@@ -41,18 +43,18 @@ class _EmployeePageState extends State<EmployeePage> {
       body: FutureBuilder(
         future: MyDatabase().getData(),
         builder: (context, snapshot) {
-          if(snapshot.data != null && snapshot.hasData){
+          if (snapshot.data != null && snapshot.hasData) {
             return ListView(
               children: getTiles(list: snapshot.data),
             );
-          }
-          else{
+          } else {
             return const CircularProgressIndicator();
           }
         },
       ),
     );
   }
+
   List<Widget> getTiles({list}) {
     List<Widget> lst = [];
     for (int i = 0; i < list.length; i++) {
@@ -67,8 +69,11 @@ class _EmployeePageState extends State<EmployeePage> {
                   InkWell(
                     child: Icon(Icons.edit),
                     onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => AddEditPage(data:list[i])));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  AddEditPage(data: list[i])));
                     },
                   ),
                   InkWell(

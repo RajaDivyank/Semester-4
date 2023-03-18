@@ -26,20 +26,14 @@ class MyDatabase{
       await File(path).writeAsBytes(bytes);
     }
   }
-  Future<void> getUser() async {
-    Database db = await initDatabase();
-    dynamic res = await db.rawQuery("select * from employeelist");
-    print(res);
-  }
   Future<dynamic> getData() async {
     Database db = await initDatabase();
     dynamic list = await db.rawQuery("Select * from Employeelist inner join Citylist on Employeelist.CityId = Citylist.CityID");
-    getUser();
     return list;
   }
   Future<void> add({required Map<String, Object?> map}) async {
-      Database db = await initDatabase();
-      db.insert('employeelist', map);
+    Database db = await initDatabase();
+    db.insert('employeelist', map);
   }
   Future<void> deleteById(int id) async {
     Database db = await initDatabase();
