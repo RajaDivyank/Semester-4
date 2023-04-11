@@ -16,7 +16,7 @@ class _EmployeePageState extends State<EmployeePage> {
     MyDatabase().copyPasteAssetFileToRoot().then((value) {
       print("Data");
     });
-    MyDatabase().getData();
+    // MyDatabase().getData();
   }
 
   @override

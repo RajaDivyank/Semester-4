@@ -1,4 +1,4 @@
-import 'package:database_evaluation/city_model.dart';
+// import 'package:database_evaluation/city_model.dart';
 import 'package:database_evaluation/employee_page.dart';
 import 'package:database_evaluation/my_database.dart';
 import 'package:flutter/material.dart';
@@ -13,8 +13,8 @@ class AddEditPage extends StatefulWidget {
 
 class _AddEditPageState extends State<AddEditPage> {
   TextEditingController _nc = TextEditingController();
-  late CityModel __ddSelected;
-  bool isCityListGet = true;
+  // late CityModel __ddSelected;
+  // bool isCityListGet = true;
 
   @override
   void initState() {
@@ -81,12 +81,12 @@ class _AddEditPageState extends State<AddEditPage> {
     );
   }
 
-  CityModel getEditCity(List<CityModel> abc, usersCityID) {
-    for (int i = 0; i < abc.length; i++) {
-      if (abc[i].cityId == usersCityID) {
-        return abc[i];
-      }
-    }
-    return abc[0];
-  }
+  // CityModel getEditCity(List<CityModel> abc, usersCityID) {
+  //   for (int i = 0; i < abc.length; i++) {
+  //     if (abc[i].cityId == usersCityID) {
+  //       return abc[i];
+  //     }
+  //   }
+  //   return abc[0];
+  // }
 }
