@@ -43,7 +43,7 @@ class _AddEditPageState extends State<AddEditPage> {
         body: jsonEncode(map));
   }
 
-  void editLaptop(Map<String, Object?> map, {id}) async {
+  Future<void> editLaptop(Map<String, Object?> map, {id}) async {
     map['id'] = id;
     http.Response res = await http.put(
         Uri.parse('https://6311884019eb631f9d740d9b.mockapi.io/laptop/' + id),
