@@ -42,6 +42,11 @@ class MyDatabase{
     db.rawQuery("Delete from employeelist where EmployeeID = ${id}");
   }
 
+  Future<void> editById(map, id) async {
+    Database db = await initDatabase();
+    dynamic res = await db.update("employeelist",map, where: "id = ?", whereArgs: [id]);
+  }
+
   // Future<List<CityModel>> getCityList() async {
   //   Database db = await initDatabase();
   //   List<Map<String, Object?>> res = await db.rawQuery("Select * from Citylist");

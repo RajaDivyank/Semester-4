@@ -84,7 +84,8 @@ class _AddEditPageState extends State<AddEditPage> {
                 Navigator.of(context)..push(
                     MaterialPageRoute(builder: (context) => LaptopPage())..setState(() { }));
               },
-              child: const Text("Submit")),
+              child: const Text("Submit")
+          ),
         ],
       ),
     );

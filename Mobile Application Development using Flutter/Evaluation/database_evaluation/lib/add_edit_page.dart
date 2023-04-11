@@ -62,10 +62,8 @@ class _AddEditPageState extends State<AddEditPage> {
                 Map<String, Object?> map = {};
                 map["EmployeeName"] = _nc.text;
                 if (widget.data != null) {
-                  map["EmployeeID"] = widget.data!["EmployeeID"];
-                  MyDatabase().deleteById(
-                      int.parse(map["EmployeeID"].toString()));
-                  MyDatabase().add(map: map);
+                  map["id"] = widget.data!["id"];
+                  MyDatabase().editById(map, map["id"]);
                 } else {
                   MyDatabase().add(map: map);
                 }
