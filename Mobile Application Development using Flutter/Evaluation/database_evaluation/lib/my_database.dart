@@ -1,5 +1,5 @@
 import 'dart:io';
-// import 'package:database_evaluation/city_model.dart';
+import 'package:database_evaluation/city_model.dart';
 import 'package:path/path.dart';
 import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
@@ -26,38 +26,39 @@ class MyDatabase{
       await File(path).writeAsBytes(bytes);
     }
   }
+
   Future<dynamic> getData() async {
     Database db = await initDatabase();
-    dynamic list = await db.rawQuery("Select * from Employeelist inner join Citylist on Employeelist.CityId = Citylist.CityID");
+    dynamic list = await db.rawQuery("Select * from Employeelist inner join Citylist on Employeelist.CityId = Citylist.CityId");
     return list;
   }
 
   Future<void> add({required Map<String, Object?> map}) async {
     Database db = await initDatabase();
-    db.insert('employeelist', map);
+    db.insert('Employeelist', map);
   }
 
   Future<void> deleteById(int id) async {
     Database db = await initDatabase();
-    db.rawQuery("Delete from employeelist where EmployeeID = ${id}");
+    db.rawQuery("Delete from Employeelist where EmployeeId = ${id}");
   }
 
   Future<void> editById(map, id) async {
     Database db = await initDatabase();
-    dynamic res = await db.update("employeelist",map, where: "id = ?", whereArgs: [id]);
+    dynamic res = await db.update("Employeelist",map, where: "id = ?", whereArgs: [id]);
   }
 
-  // Future<List<CityModel>> getCityList() async {
-  //   Database db = await initDatabase();
-  //   List<Map<String, Object?>> res = await db.rawQuery("Select * from Citylist");
-  //   List<CityModel> resList = [];
-  //   for (int i = 0; i < res.length; i++) {
-  //     CityModel model = CityModel();
-  //     model.cityId = int.parse(res[i]["CityID"].toString());
-  //     model.cityName = res[i]["CityName"].toString();
-  //     resList.add(model);
-  //   }
-  //   print(resList.toString());
-  //   return resList;
-  // }
+  Future<List<CityModel>> getCityList() async {
+    Database db = await initDatabase();
+    List<Map<String, Object?>> res = await db.rawQuery("Select * from Citylist");
+    List<CityModel> resList = [];
+    for (int i = 0; i < res.length; i++) {
+      CityModel model = CityModel();
+      model.CityId = int.parse(res[i]["CityId"].toString());
+      model.CityName = res[i]["CityName"].toString();
+      resList.add(model);
+    }
+    print(resList.toString());
+    return resList;
+  }
 }

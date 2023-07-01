@@ -1,14 +1,14 @@
-// class CityModel {
-//   int? _cityId;
-//   String? _cityName;
+class CityModel {
+  int? _CityId;
+  String? _CityName;
 
-//   String? get cityName => _cityName;
-//   set cityName(String? value) {
-//     _cityName = value;
-//   }
+  String? get CityName => _CityName;
+  set CityName(String? value) {
+    _CityName = value;
+  }
 
-//   int? get cityId => _cityId;
-//   set cityId(int? value) {
-//     _cityId = value;
-//   }
-// }
+  int? get CityId => _CityId;
+  set CityId(int? value) {
+    _CityId = value;
+  }
+}

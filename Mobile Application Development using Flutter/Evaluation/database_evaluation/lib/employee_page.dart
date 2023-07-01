@@ -16,7 +16,7 @@ class _EmployeePageState extends State<EmployeePage> {
     MyDatabase().copyPasteAssetFileToRoot().then((value) {
       print("Data");
     });
-    // MyDatabase().getData();
+    MyDatabase().getData();
   }
 
   @override
@@ -79,7 +79,7 @@ class _EmployeePageState extends State<EmployeePage> {
                   InkWell(
                     child: const Icon(Icons.delete),
                     onTap: () {
-                      MyDatabase().deleteById(list[i]["EmployeeID"]);
+                      MyDatabase().deleteById(list[i]["EmployeeId"]);
                       setState(() {});
                     },
                   )
